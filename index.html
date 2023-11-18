@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Saya</title>
+    <style>
+        /* ... (CSS sebelumnya) */
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+        }
+
+        .header img {
+            width: 100%;
+            height: 180px;
+            margin-top: 3px;
+        }
+
+        nav {
+            position: relative;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 5;
+            overflow: hidden;
+            background-color: #2a2a2aaf;
+            position: absolute;
+            top: 50px;
+            left: -100%;
+            width: 100%;
+            height: 50vh;
+            transition: left 0.3s ease-in-out;
+        }
+
+        nav li, #h2 {
+            display: block;
+            text-align: center;
+            margin: 0;
+            padding: 10px;
+            color: yellow;
+            position: relative;
+        }
+
+        nav ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #2a2a2aaf;
+    border-radius: 0 0 5px 5px;
+    z-index: 1; /* Menetapkan indeks Z untuk mengatasi tumpukan */
+}
+
+nav ul ul.active {
+    display: block;
+}
+
+nav li {
+    position: relative;
+}
+
+nav li:hover > ul {
+    display: inherit;
+    z-index: 2; /* Menetapkan indeks Z untuk submenu agar muncul di atas */
+}
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        a:hover {
+            color: #ddd;
+        }
+
+        .hamburger, .close-menu {
+            display: block;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 2;
+            font-size: 30px;
+        }
+
+        .close-menu {
+            display: none;
+        }
+
+        section {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        footer {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            text-align: center; /* Teks di tengah */
+            background-color: #333; /* Warna latar footer */
+            color: #fff; /* Warna teks footer */
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .card-description {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .release-date {
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .like-button {
+            background-color: #4285f4;
+            color: #fff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .like-button:hover {
+            background-color: #2c64b3;
+        }
+
+        /* ... (CSS setelahnya) */
+
+        footer {
+            width: auto; /* Menetapkan lebar 100% */
+            margin-left: 0px; /* Mengatur margin kiri menjadi otomatis */
+            margin-right: 0px; /* Mengatur margin kanan menjadi otomatis */
+            padding: 20px; /* Ubah nilai padding sesuai kebutuhan Anda */
+            border: 1px solid #ddd;
+            text-align: center; /* Teks di tengah */
+            background-color: #333; /* Warna latar footer */
+            color: #fff; /* Warna teks footer */
+        }
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+}
+
+
+.floating-button a {
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-color: #0; /* Ganti dengan warna yang diinginkan */
+    border-radius: 50%;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);   
+    text-decoration: none;
+}
+
+.floating-button img {
+    width: 50px; /* Sesuaikan dengan ukuran logo */
+    height: 50px; /* Sesuaikan dengan ukuran logo */
+    margin-top: 0px;
+}
+
+
+#description {
+    max-height: 100px; /* Atur tinggi maksimum yang ingin ditampilkan */
+    overflow: hidden;
+    transition: max-height 0.5s ease; /* Animasi perubahan ketinggian */
+}
+
+#read-more1, #read-more2{
+    display: block;
+    margin-top: 10px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: #4285f4;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+    </style>
+</head>
+<body>
+    
+    <div class="floating-button">
+    <a href="https://t.me/PocoM5oprek" target="_blank">
+        <img src="Gambar/telegram 1.png" alt="Telegram Logo">
+    </a>
+</div>
+
+    <nav>
+        <header>
+            <h1>Poco M5</h1>
+            <div class="hamburger">&#9776;</div>
+            <div class="close-menu">&#10006;</div>
+            
+           <ul>
+    <li id="h2">
+        <h2>Pilih menu</h2>
+        <hr>
+    </li>
+    <li><a href="#">Beranda</a></li>
+    <li>
+        <a href="#">Notes</a>
+        <ul>
+            <li><a href="#">Submenu 1</a></li>
+            <li><a href="#">Submenu 2</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#">Tutorial</a>
+        <ul>
+            <li><a href="#">Submenu 1</a></li>
+            <li><a href="#">Submenu 2</a></li>
+        </ul>
+    </li>
+</ul>
+
+
+        </header>
+    </nav>
+
+    <div class="header img">
+        <img src="Gambar/header.jpg" alt="Deskripsi Gambar">
+    </div>
+
+    <section>
+        <h2>Silahkan pilih</h2>
+        <p>pilih cusrom dibawah,banyak pilihan dan download.</p>
+
+     <div class="card">
+        <img src="Gambar/foto 1.jpg" alt="Card Image 1">
+        <div class="release-date">Rilis: 01 Januari 2023</div>
+        <div class="card-description">
+            <h3>MIUI Modded</h3>
+            <p>
+                <hr>
+                📱 PROJECT NAME: MIUI Modded<br>
+                🔥 VERSION: 14.0.5 ID (A13)<br>
+                👨‍💻 MODDER: Asmodeus7999<br>
+                🗓 DATE: 16-11-2023<br>
+            </p>
+            <div id="hiddenContent1" style="display: none;">
+                <hr>
+                🌟 HIGHLIGHTS:<br>
+                • Fix theme bug (thx to @vawnanh2801)<br>
+                • Change camera to Leica Camera<br>
+                • Add Security app modded by Kashi
+                
+                <hr>
+                📝 FLASHING INSTRUCTION:<br>
+                • Reboot into recovery<br>
+                • Flash the rom<br>
+                • Format Data<br>
+                • Reboot System<br>
+            </div>
+            <hr>
+            <center> <button id="read-more1" onclick="toggleReadMore('hiddenContent1', 'read-more1')">Baca Selengkapnya</button></center>
+        </div>
+        <br>
+        <a href="lokasi-file-download" class="like-button">Download</a>
+    </div>
+<!-- perbatasan -->
+    <div class="card">
+        <img src="Gambar/foto 2.jpg" alt="Card Image 1">
+        <div class="release-date">Rilis: 01 Januari 2023</div>
+        <div class="card-description">
+            <h3>RisingOS</h3>
+            <p>
+                <hr>
+📱 PROJECT NAME: RisingOS<br>
+🔥 VERSION: 1.4 Elysium (A13)<br>
+👨‍💻 DEVELOPER: michionle & HOAMSI<br>
+🗓 DATE: 23-10-2023<br>
+            </p>
+            <div id="hiddenContent2" style="display: none;">
+                <hr>
+                🌟 HIGHLIGHTS:<br>
+• Update September Security Patch<br>
+• Fix DT2W<br>
+• Disable DroidGuard on boot<br>
+• Merge vendor to MIUI 14.0.5 ID with removed<br> Thermal Hal 2.0 mtk service<br>
+<hr>
+🗑 BUGS:<br>
+• Safetynet and Play integrity failed and can't fix with magisk module
+<hr>
+📝 FLASHING INSTRUCTION:<br>
+• Reboot into recovery<br>
+• Flash the rom<br>
+• Format Data<br>
+• Reboot System<br>
+<br>
+Thanks to :
+- Anyone who helping devs for testing the ROM.
+<hr>
+            </div>
+            <center> <button id="read-more2" onclick="toggleReadMore('hiddenContent2', 'read-more2')">Baca Selengkapnya</button></center>
+        </div>
+        <br>
+        <a href="lokasi-file-download" class="like-button">Download</a>
+    </div>
+    <!-- perbatasan -->
+    
+    </section>
+
+    <!-- ... (Bagian HTML yang lain) -->
+
+    <footer> <p>&copy; 2023 Poco M5 Underground</p>
+    </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log('Website telah dimuat sepenuhnya.');
+
+        var hamburger = document.querySelector('.hamburger');
+        var closeMenu = document.querySelector('.close-menu');
+        var navUl = document.querySelector('nav ul');
+
+        // Fungsi untuk menangani klik pada hamburger
+        hamburger.addEventListener('click', function () {
+            navUl.style.left = '0';
+            hamburger.style.display = 'none';
+            closeMenu.style.display = 'block';
+        });
+
+        // Fungsi untuk menangani klik pada tombol close-menu
+        closeMenu.addEventListener('click', function () {
+            navUl.style.left = '-100%';
+            hamburger.style.display = 'block';
+            closeMenu.style.display = 'none';
+
+            // Menutup submenu dengan menghapus class 'active' dari setiap submenu
+            var subMenus = document.querySelectorAll('nav ul ul');
+            subMenus.forEach(function (submenu) {
+                submenu.classList.remove('active');
+            });
+        });
+
+        // Fungsi untuk menangani klik pada setiap menu utama
+        var mainMenuItems = document.querySelectorAll('nav li');
+        mainMenuItems.forEach(function (menuItem) {
+            menuItem.addEventListener('click', function () {
+                var subMenu = menuItem.querySelector('ul');
+                
+                // Memeriksa apakah submenu aktif atau tidak
+                var isActive = subMenu.classList.contains('active');
+
+                // Menutup semua submenu sebelum membuka yang baru
+                var allSubMenus = document.querySelectorAll('nav ul ul');
+                allSubMenus.forEach(function (submenu) {
+                    submenu.classList.remove('active');
+                });
+
+                // Jika submenu tidak aktif, maka buka
+                if (!isActive) {
+                    subMenu.classList.add('active');
+                }
+            });
+        });
+    });
+    
+    
+   
+  function toggleReadMore(id, buttonId) {
+    var hiddenContent = document.getElementById(id);
+    var readMoreButton = document.getElementById(buttonId);
+
+    if (hiddenContent && readMoreButton) {
+        if (hiddenContent.style.display === "none") {
+            hiddenContent.style.display = "block";
+            readMoreButton.innerHTML = "Tutup";
+        } else {
+            hiddenContent.style.display = "none";
+            readMoreButton.innerHTML = "Baca Selengkapnya";
+        }
+    } else {
+        console.error("Elemen dengan id '" + id + "' atau '" + buttonId + "' tidak ditemukan.");
+    }
+}
+
+
+
+
+
+</script>
+
