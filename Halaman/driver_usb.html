@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating Card</title>
+    <style>
+       html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: url('latar.jpg') center/cover no-repeat; /* Menetapkan gambar sebagai latar belakang */
+    background-size: cover; /* Membuat gambar mencakup seluruh latar belakang tanpa merubah proporsi */
+    background-attachment: fixed; /* Membuat gambar tetap pada tempatnya saat menggulir halaman */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    overflow-x: hidden;
+    margin-bottom: 70px; /* Margin bawah untuk memberikan ruang dengan footer */
+}
+
+
+        
+
+    .card {
+    width: 90%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Pastikan card ada di atas elemen lain di halaman */
+}
+
+
+     
+
+        img {
+    display: block;
+    max-width: 95%;
+    height: auto;
+    margin: auto; /* Agar gambar berada di tengah */
+    border-bottom: 1px solid #ddd;
+}
+
+
+        .card-description {
+            padding: 16px;
+            text-align: center;
+        }
+
+        header {
+            background-color: #333;
+            color: #fffffff3;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+        }
+
+        nav {
+            position: relative;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 5;
+            overflow: hidden;
+            background-color: #2a2a2aaf;
+            position: absolute;
+            top: 50px;
+            left: -100%;
+            width: 100%;      
+            height: 50vh;   
+            transition: left 0.3s ease-in-out;
+            z-index: 2;
+        }
+
+        li hr {
+            width: 90%;
+            margin: 0 auto;
+            border-bottom: 1px solid #000000dd;
+        }
+
+        nav li, #h2 {
+            display: block;
+            text-align: center;
+            margin: 0;
+            padding: 10px;
+            color: #0084c5;
+            position: relative;
+        }
+
+        nav ul ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #111110e2;
+            border-radius: 0 0 5px 5px;
+            z-index: 1;
+        }
+
+        nav ul ul.active {
+            display: block;
+        }
+
+        nav li {
+            position: relative;
+        }
+
+        nav li:hover > ul {
+            display: inherit;
+            z-index: 2;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        a:hover {
+            color: #ddd;
+        }
+
+        .hamburger, .close-menu {
+            display: block;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 2;
+            font-size: 30px;
+        }
+
+        .close-menu {
+            display: none;
+        }
+
+        footer {
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            background-color: #0e0e0ee6;
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+        }
+        
+          .like-button {
+            background-color: #4285f4;
+            color: #fff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .like-button:hover {
+            background-color: #2c64b3;
+        }
+        
+          #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+    </style>
+</head>
+<body>
+     <div id="particles-js"></div>
+    <nav>
+        <header>
+            <h1>Poco M5</h1>
+            <div class="hamburger">&#9776;</div>
+            <div class="close-menu">&#10006;</div>
+            
+            <ul>
+                <li id="h2">
+                    <h2>Pilih menu</h2>
+                    <hr>
+                </li>
+                <li><a href="#">Beranda</a></li>
+                <li><a href="#">Modul</a> </li>
+            </ul>
+        </header>
+    </nav>
+
+    <div class="card">
+        <br>
+        <img src="driver.jpg" alt="Card Image">
+        <div class="card-description">
+            <h2>Driver_usb</h2>
+            <hr>          
+            <p>Cara install driver bisa kalian lihat di bawah.</p>
+            <br>
+            <a href="http://www.xda-developers.com/download-android-usb-drivers/" class="like-button">cara pasang</a>             
+             <a href="https://t.me/PocoM5oprek/68941" class="like-button">Video tutorial</a> 
+            <br>
+            <br>
+              <hr>
+           <br>
+         
+             <a href="https://www.mediafire.com/file/ba8w1dprmum13ao/usb_driver_r13-windows.zip/file" class="like-button">Download</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 Poco M5 Underground</p>
+    </footer>
+    
+   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#2affea"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#ff4900"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.7,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#48686c",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 3, // Mengurangi kecepatan partikel
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "attract": {
+                        "enable": true,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onmousemove": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 200,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+   
+   
+   
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('Website telah dimuat sepenuhnya.');
+
+            var hamburger = document.querySelector('.hamburger');
+            var closeMenu = document.querySelector('.close-menu');
+            var navUl = document.querySelector('nav ul');
+
+            // Fungsi untuk menangani klik pada hamburger
+            hamburger.addEventListener('click', function () {
+                navUl.style.left = '0';
+                hamburger.style.display = 'none';
+                closeMenu.style.display = 'block';
+            });
+
+            // Fungsi untuk menangani klik pada tombol close-menu
+            closeMenu.addEventListener('click', function () {
+                navUl.style.left = '-100%';
+                hamburger.style.display = 'block';
+                closeMenu.style.display = 'none';
+
+                // Menutup submenu dengan menghapus class 'active' dari setiap submenu
+                var subMenus = document.querySelectorAll('nav ul ul');
+                subMenus.forEach(function (submenu) {
+                    submenu.classList.remove('active');
+                });
+            });
+
+            // Fungsi untuk menangani klik pada setiap menu utama
+            var mainMenuItems = document.querySelectorAll('nav li');
+            mainMenuItems.forEach(function (menuItem) {
+                menuItem.addEventListener('click', function () {
+                    var subMenu = menuItem.querySelector('ul');
+                    
+                    // Memeriksa apakah submenu aktif atau tidak
+                    var isActive = subMenu.classList.contains('active');
+
+                    // Menutup semua submenu sebelum membuka yang baru
+                    var allSubMenus = document.querySelectorAll('nav ul ul');
+                    allSubMenus.forEach(function (submenu) {
+                        submenu.classList.remove('active');
+                    });
+
+                    // Jika submenu tidak aktif, maka buka
+                    if (!isActive) {
+                        subMenu.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

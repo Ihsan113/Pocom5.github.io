@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Saya</title>
+    <title>Poco m5 underground</title>
     <style>
         /* ... (CSS sebelumnya) */
 
@@ -11,6 +11,7 @@
             height: 100%;
             margin: 0;
             padding: 0;
+            
         }
 
         body {
@@ -20,11 +21,12 @@
             align-items: stretch;
             min-height: 100vh;
             overflow-x: hidden;
+            background-color: #0d0d0df4;
         }
 
         header {
             background-color: #333;
-            color: #fff;
+            color: #fffffff3;
             text-align: center;
             padding: 10px;
             position: relative;
@@ -50,16 +52,23 @@
             top: 50px;
             left: -100%;
             width: 100%;
-            height: 50vh;
+            height: 180vh;
             transition: left 0.3s ease-in-out;
         }
+        
+li hr {
+    width: 90%; /* Ganti dengan lebar yang diinginkan, bisa dalam persen atau nilai lainnya */
+    margin: 0 auto; /* Ini akan membuat garis berada di tengah secara horizontal */
+    border-bottom: 1px solid #000000dd;
+}
+
 
         nav li, #h2 {
             display: block;
             text-align: center;
             margin: 0;
             padding: 10px;
-            color: yellow;
+            color: #0084c5;
             position: relative;
         }
 
@@ -68,7 +77,7 @@
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #2a2a2aaf;
+    background-color: #111110e2;
     border-radius: 0 0 5px 5px;
     z-index: 1; /* Menetapkan indeks Z untuk mengatasi tumpukan */
 }
@@ -110,10 +119,12 @@ nav li:hover > ul {
         }
 
         section {
-            margin: 20px;
-            padding: 10px;
+            margin: 5px;
+            padding: 0px;
             border: 1px solid #ddd;
             text-align: center;
+            color: white;
+            border-radius: 5px;
         }
 
         footer {
@@ -130,11 +141,12 @@ nav li:hover > ul {
             flex-direction: column;
             align-items: center;
             margin: 20px;
-            padding: 10px;
-            border: 1px solid #ddd;
+            padding: 15px;
+            border: 2px solid #ddd;
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
+            
         }
 
         .card img {
@@ -175,9 +187,9 @@ nav li:hover > ul {
             margin-left: 0px; /* Mengatur margin kiri menjadi otomatis */
             margin-right: 0px; /* Mengatur margin kanan menjadi otomatis */
             padding: 20px; /* Ubah nilai padding sesuai kebutuhan Anda */
-            border: 1px solid #ddd;
+            
             text-align: center; /* Teks di tengah */
-            background-color: #333; /* Warna latar footer */
+            background-color: #0e0e0ee6; /* Warna latar footer */
             color: #fff; /* Warna teks footer */
         }
 .floating-button {
@@ -222,6 +234,69 @@ nav li:hover > ul {
     text-decoration: underline;
 }
 
+
+
+ .slide-in-left-animation {
+      animation: slideInLeft 2s forwards;
+      color: white;
+    }
+    
+     @keyframes slideInLeft {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+ .slide-fade-animation {
+      animation: slideAndFade 2s forwards;
+      font-size: 15px;
+    }
+    @keyframes slideAndFade {
+      0% {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    .navigation-buttons {
+    text-align: center;
+    margin-right: 20px;
+    margin-left: 20px;
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch; /* Efek swipe di perangkat iOS */
+    
+}
+
+/*navigasi button*/
+
+.navigation-buttons a {
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #225566; /* Warna latar belakang tombol */
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-right: 20px;
+}
+
+/* Styling tambahan sesuai kebutuhan */
+
+
+.navigation-buttons a:hover {
+    background-color: #225566; /* Warna latar belakang tombol saat dihover */
+}
+
+    
     </style>
 </head>
 <body>
@@ -244,18 +319,67 @@ nav li:hover > ul {
         <hr>
     </li>
     <li><a href="#">Beranda</a></li>
+    <li><a href="#">Modul</a> </li>
+   
     <li>
         <a href="#">Notes</a>
         <ul>
-            <li><a href="#">Submenu 1</a></li>
-            <li><a href="#">Submenu 2</a></li>
-        </ul>
-    </li>
-    <li>
-        <a href="#">Tutorial</a>
-        <ul>
-            <li><a href="#">Submenu 1</a></li>
-            <li><a href="#">Submenu 2</a></li>
+            <hr>
+            <li><a href="Halaman/driver_usb.html">- driver_usb</a></li>
+            <hr>
+            <li><a href="#">- fix_error_flashing</a></li>
+            <hr>
+            <li><a href="#">- fix_problem</a></li>
+            <hr>
+<li><a href="#">- flashing_custom_recovery</a></li>
+<hr>
+<li><a href="#">- flashing_custom_rom</a></li>
+<hr>
+<li><a href="#">- flashing_gsi</a></li>
+<hr>
+<li><a href="#">- flashing_magisk</a></li>
+<hr>
+<li><a href="#">- flashing_stockrom</a></li>
+<hr>
+<li><a href="#">- gapps</a></li>
+<hr>
+<li><a href="#">- gcam</a></li>
+<hr>
+<li><a href="#">- gsi</a></li>
+<hr>
+<li><a href="#">- hide_root</a></li>
+<hr>
+<li><a href="#">- imei_backup_tools</a></li>
+<hr>
+<li><a href="#">- kernelsu</a></li>
+<hr>
+<li><a href="#">- kode_miui</a></li>
+<hr>
+<li><a href="#">- magisk</a></li>
+<hr>
+<li><a href="#">- magisk_ksu_patched</a></li>
+<hr>
+<li><a href="#">- miflash_tool</a></li>
+<hr>
+<li><a href="#">- mi_unlock</a></li>
+<hr>
+<li><a href="#">- perhatian</a></li>
+<hr>
+<li><a href="#">- pesan_moral</a></li>
+<hr>
+<li><a href="#">- platform_tools</a></li>
+<hr>
+<li><a href="#">- recommended_gsi</a></li>
+<hr>
+<li><a href="#">- ubl</a></li>
+<hr>
+<li><a href="#">- vbmeta</a></li>
+<hr>
+<li><a href="#">- youtube_revanced</a></li>
+<hr>
+<br>
+
+<center><h4>Created by @Sanz113</h4></center>
         </ul>
     </li>
 </ul>
@@ -267,10 +391,26 @@ nav li:hover > ul {
     <div class="header img">
         <img src="Gambar/header.jpg" alt="Deskripsi Gambar">
     </div>
-
+<br>
+ 
+  <div class="navigation-container">
+  <div class="navigation-buttons">
+        <a href="Halaman/About.html">About »</a>        
+        <a href="Halaman/Profil.html">Profil</a>
+        <a href="/documents">Portofolio</a>
+        <a href="Halaman/music.html">Projek</a>
+    </div>
+</div>
+<br>
     <section>
-        <h2>Silahkan pilih</h2>
-        <p>pilih cusrom dibawah,banyak pilihan dan download.</p>
+        
+       <div class="animated-text slide-in-left-animation">
+        <h2>Costum Rom Poco M5</h2>
+        </div>
+        
+         <div class="animated-text slide-fade-animation"> <p>pilih cusrom poco m5 dibawah,download sekarang.</p></div>
+       
+
 
      <div class="card">
         <img src="Gambar/foto 1.jpg" alt="Card Image 1">
@@ -284,7 +424,9 @@ nav li:hover > ul {
                 👨‍💻 MODDER: Asmodeus7999<br>
                 🗓 DATE: 16-11-2023<br>
             </p>
+           
             <div id="hiddenContent1" style="display: none;">
+              
                 <hr>
                 🌟 HIGHLIGHTS:<br>
                 • Fix theme bug (thx to @vawnanh2801)<br>
@@ -302,7 +444,7 @@ nav li:hover > ul {
             <center> <button id="read-more1" onclick="toggleReadMore('hiddenContent1', 'read-more1')">Baca Selengkapnya</button></center>
         </div>
         <br>
-        <a href="lokasi-file-download" class="like-button">Download</a>
+        <a href="https://sourceforge.net/projects/pocom5-miui-modded/files/" class="like-button">Download</a>
     </div>
 <!-- perbatasan -->
     <div class="card">
@@ -341,7 +483,7 @@ Thanks to :
             <center> <button id="read-more2" onclick="toggleReadMore('hiddenContent2', 'read-more2')">Baca Selengkapnya</button></center>
         </div>
         <br>
-        <a href="lokasi-file-download" class="like-button">Download</a>
+        <a href="https://sourceforge.net/projects/risingos-pocom5/files/risingOS-v1.4-Elysium-FINAL-202310221727-stone-CORE.zip/download" class="like-button">Download</a>
     </div>
     <!-- perbatasan -->
     
@@ -419,11 +561,8 @@ Thanks to :
     } else {
         console.error("Elemen dengan id '" + id + "' atau '" + buttonId + "' tidak ditemukan.");
     }
-}
+}</script>
 
 
-
-
-
-</script>
-
+</body>
+</html>
