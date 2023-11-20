@@ -25,17 +25,21 @@
         }
 
         header {
-            background-color: #333;
+            background-color: #111110e2;
             color: #fffffff3;
             text-align: center;
-            padding: 10px;
-            position: relative;
+            padding: 0px;
+            position: fixed;
+            z-index: 999;
+            width: 100%;
+            height: 89px;       
         }
 
         .header img {
             width: 100%;
             height: 180px;
-            margin-top: 3px;
+            margin-top: 89px;
+            
         }
 
         nav {
@@ -45,13 +49,13 @@
         nav ul {
             list-style-type: none;
             padding: 0;
-            margin: 5;
+            margin: 0;
             overflow: hidden;
-            background-color: #2a2a2aaf;
+            background-color: #111110e2;
             position: absolute;
-            top: 50px;
+            top: 88px;
             left: -100%;
-            width: 100%;
+            width: 65%;
             height: 200vh;
             transition: left 0.3s ease-in-out;
         }
@@ -66,10 +70,11 @@ li hr {
         nav li, #h2 {
             display: block;
             text-align: center;
-            margin: 0;
+            margin: 0px;
             padding: 10px;
             color: #0084c5;
             position: relative;
+             
         }
 
         nav ul ul {
@@ -77,6 +82,7 @@ li hr {
     position: absolute;
     top: 100%;
     left: 0;
+    width: 100%;
     background-color: #111110e2;
     border-radius: 0 0 5px 5px;
     z-index: 1; /* Menetapkan indeks Z untuk mengatasi tumpukan */
@@ -223,7 +229,7 @@ nav li:hover > ul {
     transition: max-height 0.5s ease; /* Animasi perubahan ketinggian */
 }
 
-#read-more1, #read-more2{
+#read-more1, #read-more2, #read-more3, #read-more4, #read-more5{
     display: block;
     margin-top: 10px;
     cursor: pointer;
@@ -308,7 +314,7 @@ nav li:hover > ul {
 </div>
 
     <nav>
-        <header>
+        <header>         
             <h1>Poco M5</h1>
             <div class="hamburger">&#9776;</div>
             <div class="close-menu">&#10006;</div>
@@ -325,57 +331,11 @@ nav li:hover > ul {
         <a href="#">Notes</a>
         <ul>
             <hr>
-            <li><a href="Halaman/driver_usb.html">- driver_usb</a></li>
-            <hr>
-            <li><a href="#">- fix_error_flashing</a></li>
-            <hr>
-            <li><a href="#">- fix_problem</a></li>
-            <hr>
-<li><a href="#">- flashing_custom_recovery</a></li>
+            <li><a href="Halaman/driver_usb.html">[driver_usb]</a></li>
+            <hr>         
+<li><a href="Halaman/vbmeta.html">[vbmeta]</a></li>
 <hr>
-<li><a href="#">- flashing_custom_rom</a></li>
-<hr>
-<li><a href="#">- flashing_gsi</a></li>
-<hr>
-<li><a href="#">- flashing_magisk</a></li>
-<hr>
-<li><a href="#">- flashing_stockrom</a></li>
-<hr>
-<li><a href="#">- gapps</a></li>
-<hr>
-<li><a href="#">- gcam</a></li>
-<hr>
-<li><a href="#">- gsi</a></li>
-<hr>
-<li><a href="#">- hide_root</a></li>
-<hr>
-<li><a href="#">- imei_backup_tools</a></li>
-<hr>
-<li><a href="#">- kernelsu</a></li>
-<hr>
-<li><a href="#">- kode_miui</a></li>
-<hr>
-<li><a href="#">- magisk</a></li>
-<hr>
-<li><a href="#">- magisk_ksu_patched</a></li>
-<hr>
-<li><a href="#">- miflash_tool</a></li>
-<hr>
-<li><a href="#">- mi_unlock</a></li>
-<hr>
-<li><a href="#">- perhatian</a></li>
-<hr>
-<li><a href="#">- pesan_moral</a></li>
-<hr>
-<li><a href="#">- platform_tools</a></li>
-<hr>
-<li><a href="#">- recommended_gsi</a></li>
-<hr>
-<li><a href="#">- ubl</a></li>
-<hr>
-<li><a href="#">- vbmeta</a></li>
-<hr>
-<li><a href="#">- youtube_revanced</a></li>
+<li><a href="Halaman/twrp.html"> [Twrp Poco m5]</a></li>
 <hr>
 <br>
 
@@ -392,13 +352,12 @@ nav li:hover > ul {
         <img src="Gambar/header.jpg" alt="Deskripsi Gambar">
     </div>
 <br>
- 
   <div class="navigation-container">
   <div class="navigation-buttons">
-        <a href="Halaman/About.html">About »</a>        
-        <a href="Halaman/Profil.html">Profil</a>
-        <a href="/documents">Portofolio</a>
-        <a href="Halaman/music.html">Projek</a>
+        <a href="Halaman/About.html">Chat »</a>        
+        <a href="Halaman/Profil.html">Video</a>
+        <a href="/documents">Donasi</a>
+        <a href="Halaman/music.html">catatan</a>
     </div>
 </div>
 <br>
@@ -487,6 +446,181 @@ Thanks to :
     </div>
     <!-- perbatasan -->
     
+     <div class="card">
+        <img src="Gambar/havoc.jpg" alt="Card Image 1">
+        <div class="release-date">Rilis: 01 Januari 2023</div>
+        <div class="card-description">
+            <h3>RisingOS</h3>
+            <p>
+                <hr>
+📱 PROJECT NAME: HavocOS<br>
+
+🔥 VERSION: 6.0 (A13)<br>
+
+👨‍💻 DEVELOPER: HOAMSI<br>
+
+🗓 DATE: 12-10-2023<br>
+            </p>
+            <div id="hiddenContent4" style="display: none;">
+                <hr>
+                🌟 HIGHLIGHTS:<br>
+• KernelSU 0.6.2 Kernel version update to 5.10.177<br>
+
+• Included Per-app FPS controler<br>
+
+• Mi Sound Enhance added<br>
+
+<hr>
+🗑 BUGS:<br>
+
+• D2TW not working<br>
+
+• Safetynet and Play integrity failed and can't fix with magisk module<br>
+
+• Can't turn off auto hide network monitor<br>
+
+<hr>
+📝 FLASHING INSTRUCTION:<br>
+• Reboot into recovery<br>
+• Flash the rom<br>
+• Format Data<br>
+• Reboot System<br>
+<br>
+Thanks to :<br>
+- Anyone who helping devs for testing the ROM.
+
+<hr>
+            </div>
+            <center> <button id="read-more4" onclick="toggleReadMore('hiddenContent4', 'read-more4')">Baca Selengkapnya</button></center>
+        </div>
+        <br>
+        <a href="https://sourceforge.net/projects/risingos-pocom5/files/risingOS-v1.4-Elysium-FINAL-202310221727-stone-CORE.zip/download" class="like-button">Download</a>
+    </div>
+    
+     <!-- perbatasan -->
+    
+     <div class="card">
+        <img src="Gambar/foto3.jpg" alt="Card Image 1">
+        <div class="release-date">Rilis: 01 Januari 2023</div>
+        <div class="card-description">
+            <h3>CherishOS</h3>
+            <p>
+                <hr>
+📱 PROJECT NAME: CherishOS<br>
+
+🔥 VERSION: 4.11 (A13)<br>
+
+👨‍💻 DEVELOPER: HOAMSI<br>
+
+🗓 DATE: 10-09-2023<br>
+            </p>
+            <div id="hiddenContent3" style="display: none;">
+                <hr>
+                🌟 HIGHLIGHTS:<br>
+• KernelSU 0.6.7 Kernel version update to 5.10.185 compiled by @rootuid<br>
+
+• Included Per-app FPS controler<br>
+
+• Mi Sound Enhance added<br>
+
+• No Thermal services running<br>
+<hr>
+
+✅ CHANGELOG :<br>
+
+• Fix Statusbar UI<br>
+
+• Fix Framerate bug on boot (maybe)<br>
+
+<hr>
+🗑 BUGS:<br>
+
+• D2TW not working<br>
+
+• Safetynet and Play integrity failed and can't fix with magisk module<br>
+
+<hr>
+📝 FLASHING INSTRUCTION:<br>
+• Reboot into recovery<br>
+• Flash the rom<br>
+• Format Data<br>
+• Reboot System<br>
+<br>
+Thanks to :<br>
+- Anyone who helping devs for testing the ROM.
+
+<hr>
+            </div>
+            <center> <button id="read-more3" onclick="toggleReadMore('hiddenContent3', 'read-more3')">Baca Selengkapnya</button></center>
+        </div>
+        <br>
+        <a href="https://sourceforge.net/projects/risingos-pocom5/files/risingOS-v1.4-Elysium-FINAL-202310221727-stone-CORE.zip/download" class="like-button">Download</a>
+    </div>
+    <br>
+     <!-- perbatasan -->
+     
+     <hr>
+     
+     <h2>Cusvendor Poco m5</h2>
+     
+     <div class="card">
+        <img src="Gambar/vendor.jpg" alt="Card Image 1">
+        <div class="release-date">Rilis: 01 Januari 2023</div>
+        <div class="card-description">
+            <h3>A vendor mod for POCO M5 v0.3</h3>
+            <p>
+                <hr>
+!!WARNING!! VENDOR MOD MAY NOT WORKING IN STOCKROM<br><br>
+<hr>
+🔥Feature :<br>
+
+- R/W Remountable
+
+- Remove Thermal Services
+
+- Sync build.prop with system build.prop
+
+- Change base to MIUI 14.0.3 ID
+
+- Revert fstab and lib to stock due to the latest TWRP release<br>
+
+
+            </p>
+            <div id="hiddenContent5" style="display: none;">
+                <hr>
+               📝 INSTALLATION<br>
+
+ For fastboot flash file<br>
+
+- do this in fastbootd<br>
+
+- fastboot flash vendor file.img<br>
+
+- fastboot reboot recovery<br>
+
+- format data<br>
+
+- reboot system<br>
+<hr>
+📝For TWRP flash file<br>
+
+- Just flash the zip 🗿<br>
+
+- format data after that if facing issues<br>
+<br>
+Thanks to :<br>
+- Anyone who helping devs for testing the ROM.
+
+<hr>
+            </div>
+            <center> <button id="read-more5" onclick="toggleReadMore('hiddenContent5', 'read-more5')">Baca Selengkapnya</button></center>
+        </div>
+        <br>
+        <a href="https://besargaji.com/jxqBQR2F" class="like-button">Download,(img)</a>
+        <br>
+        <a href="https://besargaji.com/7PMu" class="like-button">Download,(zip)</a>
+    </div>
+     
     </section>
 
     <!-- ... (Bagian HTML yang lain) -->
