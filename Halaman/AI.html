@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Halaman Komentar</title>
+
+    <style>
+        html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: url('latar.jpg') center/cover no-repeat; /* Menetapkan gambar sebagai latar belakang */
+    background-size: cover; /* Membuat gambar mencakup seluruh latar belakang tanpa merubah proporsi */
+    background-attachment: fixed; /* Membuat gambar tetap pada tempatnya saat menggulir halaman */
+    display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+}
+
+
+        .container {
+            background-color: #1d1d1de4;
+            padding: 45px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 95%;
+            text-align: center;
+            color: white;
+            border: 1px solid #ddd;
+        }
+
+        h2 {
+            color: white;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 8px;
+            color: white;
+            
+        }
+
+        input, textarea {
+            margin-bottom: 16px;
+            padding: 8px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+    padding: 10px;
+    background-color: #31414ac0;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 150px;
+    
+}
+
+header {
+            background-color: #111110e2;
+            color: #fffffff3;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            z-index: 999;
+            width: 100%;
+            top: 0px;
+            
+        }
+
+
+        nav {
+            position: relative;
+        }
+
+        nav {
+            position: relative;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            background-color: #111110e2;
+            position: absolute;
+            top: 79px;
+            left: -100%;
+            width: 65%;
+            height: 200vh;
+            transition: left 0.3s ease-in-out;
+        }
+        
+li hr {
+    width: 90%; /* Ganti dengan lebar yang diinginkan, bisa dalam persen atau nilai lainnya */
+    margin: 0 auto; /* Ini akan membuat garis berada di tengah secara horizontal */
+    border-bottom: 1px solid #000000dd;
+}
+
+
+        nav li, #h2 {
+            display: block;
+            text-align: center;
+            margin: 0px;
+            padding: 10px;
+            color: #0084c5;
+            position: relative;
+             
+        }
+
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        a:hover {
+            color: #ddd;
+        }
+
+        .hamburger, .close-menu {
+            display: block;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 2;
+            font-size: 30px;
+        }
+
+        .close-menu {
+            display: none;
+        }
+
+
+
+ footer {
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            background-color: #0e0e0ee6;
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+        }
+        
+        button:hover {
+            background-color: #218838;
+        }
+
+        #commentSection {
+            margin-top: 20px;
+        }
+
+        .comment {
+            background-color: #f1f1f1;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            
+            
+        }
+
+        .alert {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+        /* Animasi loading */
+        .loading {
+            display: none;
+        }
+
+        .loading::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            border: 2px solid #28a745;
+            border-radius: 50%;
+            border-top: 2px solid transparent;
+            border-bottom: 2px solid transparent;
+            display: inline-block;
+            animation: spin 1s linear infinite;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        
+    </style>
+</head>
+<body>
+         <nav>
+        <header>
+            <h1>Poco M5</h1>
+            <div class="hamburger">&#9776;</div>
+            <div class="close-menu">&#10006;</div>
+            
+            <ul>
+                <li id="h2">
+                    <h2>Pilih menu</h2>
+                    <hr>
+                </li>
+                <li><a href="https://pocom5-github-io.vercel.app/">Beranda</a></li>
+            </ul>
+        </header>
+    </nav>
+    
+    <div class="container">
+        
+        <h2>Komentar</h2>
+        <hr>
+        <form id="commentForm">
+            <p>masukan email kalian supaya kami bisa membalas komentar anda.</p>
+            <label for="name">Email:</label>
+            <input type="text" id="name" required>
+
+            <label for="comment">Komentar:</label>
+            <textarea id="comment" rows="4" required></textarea>
+
+       <center><button type="button" onclick="submitComment()">Kirim Komentar</button>
+       </center>
+            <div class="loading"></div>
+            <br>
+            <div class="alert" role="alert" id="statusMessage"></div>
+        </form>
+    </div>
+ <footer>
+        <p>&copy; 2023 Poco M5 Underground</p>
+    </footer>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        // Fungsi Email.js yang tetap ada
+        emailjs.init("m_cJTc3CBeWJutcZS");
+
+        function submitComment() {
+            var name = document.getElementById('name').value;
+            var comment = document.getElementById('comment').value;
+            var loading = document.querySelector('.loading');
+            var statusMessage = document.getElementById('statusMessage');
+            var commentForm = document.getElementById('commentForm');
+
+            if (name && comment) {
+                // Tampilkan animasi loading
+                loading.style.display = 'inline-block';
+                statusMessage.style.display = 'none'; // Sembunyikan pesan status sebelumnya
+
+                // Kirim email
+                emailjs.send("service_k5d9xd7", "template_i7ittgf", {
+                    name: name,
+                    comment: comment
+                })
+                .then(function(response) {
+                    console.log('Email terkirim:', response);
+
+                    // Reset form fields
+                    document.getElementById('name').value = '';
+                    document.getElementById('comment').value = '';
+                    
+                    // Sembunyikan animasi loading
+                    loading.style.display = 'none';
+
+                    // Tampilkan pesan status berhasil
+                    statusMessage.innerHTML = 'Komentar berhasil terkirim! ✓';
+                    statusMessage.className = 'alert alert-success';
+                    statusMessage.style.display = 'block';
+                }, function(error) {
+                    console.log('Gagal mengirim email:', error);
+
+                    // Sembunyikan animasi loading dalam kondisi kesalahan
+                    loading.style.display = 'none';
+
+                    // Tampilkan pesan status gagal
+                    statusMessage.innerHTML = 'Gagal mengirim komentar. Silakan coba lagi.';
+                    statusMessage.className = 'alert alert-danger';
+                    statusMessage.style.display = 'block';
+                });
+            } else {
+                alert('Nama dan komentar harus diisi!');
+            }
+        }
+        
+        
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('Website telah dimuat sepenuhnya.');
+
+            var hamburger = document.querySelector('.hamburger');
+            var closeMenu = document.querySelector('.close-menu');
+            var navUl = document.querySelector('nav ul');
+
+            // Fungsi untuk menangani klik pada hamburger
+            hamburger.addEventListener('click', function () {
+                navUl.style.left = '0';
+                hamburger.style.display = 'none';
+                closeMenu.style.display = 'block';
+            });
+
+            // Fungsi untuk menangani klik pada tombol close-menu
+            closeMenu.addEventListener('click', function () {
+                navUl.style.left = '-100%';
+                hamburger.style.display = 'block';
+                closeMenu.style.display = 'none';
+
+                // Menutup submenu dengan menghapus class 'active' dari setiap submenu
+                var subMenus = document.querySelectorAll('nav ul ul');
+                subMenus.forEach(function (submenu) {
+                    submenu.classList.remove('active');
+                });
+            });
+
+            // Fungsi untuk menangani klik pada setiap menu utama
+            var mainMenuItems = document.querySelectorAll('nav li');
+            mainMenuItems.forEach(function (menuItem) {
+                menuItem.addEventListener('click', function () {
+                    var subMenu = menuItem.querySelector('ul');
+                    
+                    // Memeriksa apakah submenu aktif atau tidak
+                    var isActive = subMenu.classList.contains('active');
+
+                    // Menutup semua submenu sebelum membuka yang baru
+                    var allSubMenus = document.querySelectorAll('nav ul ul');
+                    allSubMenus.forEach(function (submenu) {
+                        submenu.classList.remove('active');
+                    });
+
+                    // Jika submenu tidak aktif, maka buka
+                    if (!isActive) {
+                        subMenu.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
