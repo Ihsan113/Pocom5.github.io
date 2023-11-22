@@ -225,7 +225,7 @@ nav li:hover > ul {
     transition: max-height 0.5s ease; /* Animasi perubahan ketinggian */
 }
 
-#read-more1, #read-more2, #read-more3, #read-more4, #read-more5, #read-more6{
+#read-more1, #read-more2, #read-more3, #read-more4, #read-more5, #read-more6, #read-more7, #read-more8, #read-more9 {
     display: block;
     margin-top: 10px;
     cursor: pointer;
