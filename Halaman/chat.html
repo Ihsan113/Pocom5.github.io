@@ -2,6 +2,8 @@
 <html lang="in">
 
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Chat</title>
@@ -177,6 +179,17 @@
   75% { color:#bfffff; }
   100% { color:#5558ff; }
 }
+
+#back-link {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 25px;
+    margin: 10px;
+    position: fixed;
+    top: 20px;
+    left: 10px;
+}
+
   </style>
  
  
@@ -186,6 +199,8 @@
   <div class="chat-container">
     <div class="chat-header">
         <h2 style="display: flex; align-items: center;">
+            <a id="back-link" href="javascript:history.back()"><i class="fas fa-arrow-left"></i> </a>
+            
   <img src="https://i.ibb.co/N1SvnSk/Logopit-1685801091305.png" alt="Group Icon" style="width: 36px; height: 36px; margin-right: 5px;">
   <span style="animation: color-change 1.2s infinite;">Live chat</span>
 </h2>

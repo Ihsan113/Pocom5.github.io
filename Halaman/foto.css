@@ -1,0 +1,31 @@
+
+@media only screen and (min-width: 760px) {
+
+ .card {
+    width: 75%;
+    background-color: #0c0c0cf3;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Pastikan card ada di atas elemen lain di halaman */
+    border: 1px solid #ddd;
+}
+
+
+ img {
+    display: block;
+    width: 95%;
+    height: 350px;
+    margin: auto; /* Agar gambar berada di tengah
+     */
+    border-bottom: 1px solid #ddd;
+    border-radius: 10px;
+    margin-top: -6px;
+}
+
+}
