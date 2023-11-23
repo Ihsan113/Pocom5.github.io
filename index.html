@@ -238,7 +238,7 @@ nav li:hover > ul {
     transition: max-height 0.5s ease; /* Animasi perubahan ketinggian */
 }
 
-#read-more1, #read-more2, #read-more3, #read-more4, #read-more5, #read-more6, #read-more7, #read-more8, #read-more9{
+#read-more1, #read-more2, #read-more3, #read-more4, #read-more5, #read-more6, #read-more7, #read-more8, #read-more9, #read-more10 {
     display: block;
     margin-top: 10px;
     cursor: pointer;
@@ -310,10 +310,67 @@ nav li:hover > ul {
 .navigation-buttons a:hover {
     background-color: #225566; /* Warna latar belakang tombol saat dihover */
 }
+/* Tambahkan di bawah styling yang sudah ada */
+
+.search-icon {
+    font-size: 25px;
+    
+    margin-right: 0px;
+    top: 0px;
+}
+
+.search-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.search-input {
+    display: flex;
+    align-items: center;
+    background-color: #black;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-input input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+}
+
+.search-input button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20 10px 5px 0;
+    cursor: pointer;
+    background-color: #0084c5;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.search-input button:hover {
+    background-color: #006288;
+}
+.close-button {
+    background-color: #0c588c;
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 100px;
+    display: none; /* agar tombol awalnya tersembunyi */
+    position: absolute; /* Menggunakan posisi absolute agar dapat ditempatkan di pojok layar */
+    top: 30px;
+    right: 20px;
+}
+
 
 
 
 }
+
     
     </style>
 </head>
@@ -328,6 +385,20 @@ nav li:hover > ul {
     <nav>
         <header>         
             <h1>Poco M5</h1>
+             <div class="search-icon" onclick="toggleSearchInput()">
+        🔍
+    </div>
+ <div class="search-card">
+    <div class="search-input" id="searchInput" style="display:none;">
+        <input type="text" placeholder="Cari...">
+        <button onclick="performSearch()">Cari</button>
+    </div>
+    <button class="close-button" id="closeButton" onclick="hideCloseButton()">X</button>
+</div>
+
+
+
+
             <div class="hamburger">&#9776;</div>
             <div class="close-menu">&#10006;</div>
             
@@ -380,6 +451,52 @@ nav li:hover > ul {
         </div>
         
          <div class="animated-text slide-fade-animation"> <p>pilih cusrom poco m5 dibawah,download sekarang.</p></div>
+         
+         
+         
+         
+          <div class="card">
+        <img src="Gambar/foto 10.jpg" alt="Card Image 1">
+        <div class="release-date">Rilis: 22 November 2023</div>
+        <div class="card-description">
+            <h3>MIUI Modded Lite</h3>
+            <p>
+                <hr>
+                📱 PROJECT NAME: MIUI Modded Lite<br>
+                🔥 VERSION: 14.0.5 ID (A13)<br>
+                👨‍💻 MODDER: Shine<br>
+                🗓 DATE: 16-11-2023<br>
+            </p>
+               <hr>
+           
+            <div id="hiddenContent10" style="display: none;">                            
+              
+                📝 FLASHING INSTRUCTION:<br>
+                • Reboot into bootloader<br>
+                • fastboot devices<br>
+                • # Jika terdeteksi lanjut #<br>
+• fastboot reboot fastboot<br>
+
+• fastboot flash vendor vendor.img<br>
+
+• fastboot flash product product.img<br>
+
+• fastboot flash system system.img<br>
+
+• fastboot flash system_ext system_ext.img<br>
+
+• fastboot reboot recovery<br>
+
+• format data<br>
+<hr>
+            </div>
+           
+            <center> <button id="read-more10" onclick="toggleReadMore('hiddenContent10', 'read-more10')">Baca Selengkapnya</button></center>
+        </div>
+        <br>
+        <a href="https://sourceforge.net/projects/pocom5-miui-modded/files/MIUI-14.0.5-ID-Modded-221123.zip/download" class="like-button">Download</a>
+    </div>
+<!-- perbatasan -->
        
  <div class="card">
         <img src="Gambar/foto 7.jpg" alt="Card Image 1">
@@ -669,31 +786,12 @@ Thanks to :<br>
         <br>
         <a href="https://sourceforge.net/projects/stonefirmwares/files/PixelOS%28A13%29/PixelOS_stone-13.0-20230829-0357-Recovery.zip/download" class="like-button">Download</a>
     </div>
-<!-- perbatasan -->
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     <br>
-     <br>
-     
-     <hr>
-     
-     <h2>Cusvendor Poco m5</h2>
-     
+<!-- perbatasan -->     
      <div class="card">
         <img src="Gambar/vendor.jpg" alt="Card Image 1">
         <div class="release-date">Rilis: 01 Januari 2023</div>
         <div class="card-description">
-            <h3>A vendor mod for POCO M5 v0.3</h3>
+            <h3>vendor mod for POCO M5 v0.3</h3>
             <p>
                 <hr>
 !!WARNING!! VENDOR MOD MAY NOT WORKING IN STOCKROM<br><br>
@@ -753,7 +851,7 @@ Thanks to :<br>
         <img src="Gambar/vendor.jpg" alt="Card Image 1">
         <div class="release-date">Rilis: 01 Januari 2023</div>
         <div class="card-description">
-            <h3>A vendor mod for POCO M5 v0.4</h3>
+            <h3>vendor mod for POCO M5 v0.4</h3>
             <p>
                 <hr>
 !!WARNING!! THIS VENDOR MOD MAY NOT WORKING IN RO ROM FOR EXAMPLE STOCKROM AND SOME CUSTOM ROM, SO MAKE SURE UR ROM IS RW<br>
@@ -794,7 +892,7 @@ Thanks to :<br>
         <img src="Gambar/vendor.jpg" alt="Card Image 1">
         <div class="release-date">Rilis: 01 Januari 2023</div>
         <div class="card-description">
-            <h3>A vendor mod for POCO M5 v0.5</h3>
+            <h3>vendor mod for POCO M5 v0.5</h3>
             <p>
                 <hr>
 !!WARNING!! IF FACING ISSUE BOOTLOOPING IN TWRP JUST REFLASH PREVIOUS VENDOR / DIRTY FLASH UR CUSTOM ROM / STOCKROM<br><br>
@@ -885,6 +983,67 @@ Thanks to :<br>
     });
     
     
+    
+    <!-- fitur pencarian -->
+    // Fungsi untuk melakukan pencarian
+function performSearch() {
+    var searchTerm = document.querySelector('.search-input input').value.toLowerCase();
+    var cards = document.querySelectorAll('.card');
+    var searchResultFound = false;
+
+    cards.forEach(function(card) {
+        var titleWords = card.querySelector('h3').textContent.toLowerCase().split(' ');
+        var isMatch = titleWords.some(function(word) {
+            return word.includes(searchTerm) || word.charAt(0) === searchTerm;
+        });
+
+        var displayStyle = isMatch ? 'block' : 'none';
+        card.style.display = displayStyle;
+
+        if (isMatch) {
+            searchResultFound = true;
+
+            // Tambahkan event listener untuk setiap card
+            card.addEventListener('click', function() {
+                showCloseButton(); // Panggil fungsi untuk menampilkan tombol "X"
+            });
+        }
+    });
+
+    // Tampilkan tombol "X" meskipun tidak ada hasil pencarian
+    showCloseButton();
+
+    if (searchResultFound) {
+        alert('Hasil pencarian ditemukan!');
+    } else {
+        alert('Tidak ada hasil pencarian.');
+    }
+}
+
+// Fungsi untuk menampilkan tombol "X"
+function showCloseButton() {
+    var closeButton = document.getElementById('closeButton');
+    closeButton.style.display = 'block';
+    closeButton.addEventListener('click', refreshPage); // Tambahkan event listener untuk mereset halaman saat tombol "X" diklik
+}
+
+// Fungsi untuk menyembunyikan tombol "X"
+function hideCloseButton() {
+    document.getElementById('closeButton').style.display = 'none';
+}
+
+function refreshPage() {
+    location.reload();
+}
+
+// fungsi pencarian
+function toggleSearchInput() {
+    var searchInput = document.getElementById("searchInput");
+    searchInput.style.display = (searchInput.style.display === "none" || searchInput.style.display === "") ? "flex" : "none";
+}
+
+
+<!-- fitur pencarian -->
    
   function toggleReadMore(id, buttonId) {
     var hiddenContent = document.getElementById(id);
