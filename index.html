@@ -356,8 +356,8 @@ nav li:hover > ul {
 /* Tambahkan di bawah styling yang sudah ada */
 
 .search-icon {
-    font-size: 25px;
-    
+    font-size: 18px;
+    color: #15cbff;
     margin-right: 0px;
     top: 0px;
 }
@@ -430,14 +430,14 @@ nav li:hover > ul {
     <nav>
         <header>         
             <h1>Poco M5</h1>
-             <div class="search-icon" onclick="toggleSearchInput()">
-        🔍
-    </div>
+            <div class="search-icon" onclick="toggleSearchInput()"> <i class="fas fa-search"></i> 
+            </div>
+            
  <div class="search-card">
     <div class="search-input" id="searchInput" style="display:none;">
            <div class="animated-text bounce-animation">
         <input type="text" placeholder="Cari...">
-        <button onclick="performSearch()">🔎</button>
+        <button class="search-button" onclick="performSearch()"><i class="fas fa-search"></i></button>
         </div>
     </div>
     <button class="close-button" id="closeButton" onclick="hideCloseButton()">X</button>
@@ -614,7 +614,7 @@ nav li:hover > ul {
                 👨‍💻 MODDER: Asmodeus7999<br>
                 🗓 DATE: 16-11-2023<br>
             </p>
-           
+            <hr>
             <div id="hiddenContent1" style="display: none;">
               
                 <hr>
@@ -628,13 +628,19 @@ nav li:hover > ul {
                 • Reboot into recovery<br>
                 • Flash the rom<br>
                 • Format Data<br>
-                • Reboot System<br>
+                • Reboot System<br>                
+               <hr>
+               <br>
+                
+                <a href="Halaman/miuimod1.html" class="like-button"><i class="fas fa-eye"></i></a> </body>
+       
             </div>
-            <hr>
+            
+             <br>
             <center> <button id="read-more1" onclick="toggleReadMore('hiddenContent1', 'read-more1')">Baca Selengkapnya</button></center>
         </div>
         <br>
-        <a href="https://sourceforge.net/projects/pocom5-miui-modded/files/" class="like-button">Download</a>
+ <a        href="https://sourceforge.net/projects/pocom5-miui-modded/files/" class="like-button">Download</a>
     </div>
 <!-- perbatasan -->
     <div class="card">
