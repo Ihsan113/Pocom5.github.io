@@ -130,30 +130,63 @@ nav li:hover > ul {
         }
 
         footer {
-            margin: 20px;
-            padding: 20px;
-            border: 1px solid #ddd;
+       border: 1px solid #ddd;
+            width: auto; /* Menetapkan lebar 100% */
+            margin-left: 0px; /* Mengatur margin kiri menjadi otomatis */
+            margin-right: 0px; /* Mengatur margin kanan menjadi otomatis */
+            padding: 20px; /* Ubah nilai padding sesuai kebutuhan Anda */
+            
             text-align: center; /* Teks di tengah */
-            background-color: #333; /* Warna latar footer */
+            background-color: #0e0e0ee6; /* Warna latar footer */
             color: #fff; /* Warna teks footer */
         }
+
+
+#scrollToTopButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: #3498db; /* Warna biru */
+    border: none;
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    width: 40px;
+    margin: 0 auto;
+    padding: 15px; /* Menambahkan padding untuk efek hover */
+    border-radius: 50px; /* Agar tombol memiliki sudut yang melengkung */
+    transition: background 0.3s; /* Efek transisi saat hover */
+}
+
+#scrollToTopButton:hover {
+    background: #2980b9; /* Warna biru yang berbeda saat tombol dihover */
+}
+
+#scrollToTopButton i {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
 
         .card {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 80px;
-            padding: 15px;
+            margin: 220px;
+            padding: 10px;
             border: 2px solid #ddd;
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
-            
+             margin-bottom: 80px;
+            font-size: 20px;
         }
 
         .card img {
-            max-width: 100%;
-            height: auto;
+            width: 100%;
+            height: 380px;
             border-radius: 5px;
             margin-bottom: 10px;
         }
@@ -184,20 +217,11 @@ nav li:hover > ul {
 
         /* ... (CSS setelahnya) */
 
-        footer {
-            width: auto; /* Menetapkan lebar 100% */
-            margin-left: 0px; /* Mengatur margin kiri menjadi otomatis */
-            margin-right: 0px; /* Mengatur margin kanan menjadi otomatis */
-            padding: 20px; /* Ubah nilai padding sesuai kebutuhan Anda */
-            
-            text-align: center; /* Teks di tengah */
-            background-color: #0e0e0ee6; /* Warna latar footer */
-            color: #fff; /* Warna teks footer */
-        }
+       
 .floating-button {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 50px;
+    right: 40px;
     z-index: 999;
 }
 
@@ -213,8 +237,8 @@ nav li:hover > ul {
 }
 
 .floating-button img {
-    width: 50px; /* Sesuaikan dengan ukuran logo */
-    height: 50px; /* Sesuaikan dengan ukuran logo */
+    width: 80px; /* Sesuaikan dengan ukuran logo */
+    height: 80px; /* Sesuaikan dengan ukuran logo */
     margin-top: 0px;
 }
 
@@ -267,6 +291,21 @@ nav li:hover > ul {
       }
     }
     
+     .bounce-animation {
+      animation: bounce 2s forwards;
+    }
+      @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-35px);
+      }
+      60% {
+        transform: translateY(-5px);
+      }
+    }
+    
      .navigation-buttons {
     text-align: center;
     margin-right: 20px;
@@ -307,7 +346,7 @@ nav li:hover > ul {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px;
+    margin: 0px;
 }
 
 .search-input {
@@ -321,13 +360,15 @@ nav li:hover > ul {
 .search-input input {
     padding: 10px;
     border: none;
-    border-radius: 5px 0 0 5px;
+    border-radius: 10px;
+    
 }
 
 .search-input button {
-    padding: 10px 20px;
+    padding: 10px;
     border: none;
-    border-radius: 20 10px 5px 0;
+    margin: 5px;
+    border-radius: 50px;
     cursor: pointer;
     background-color: #0084c5;
     color: #fff;
@@ -349,6 +390,7 @@ nav li:hover > ul {
     top: 30px;
     right: 20px;
 }
+
 
 
 

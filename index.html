@@ -5,7 +5,7 @@
  
     <link rel="stylesheet" type="text/css" href="Halaman/indexpc.css">
 
-
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
     
     <meta charset="UTF-8">
@@ -142,14 +142,46 @@ nav li:hover > ul {
             border-radius: 5px;
         }
 
-        footer {
-            margin: 20px;
-            padding: 20px;
-            border: 1px solid #ddd;
+       footer {
+       border: 1px solid #ddd;
+            width: auto; /* Menetapkan lebar 100% */
+            margin-left: 0px; /* Mengatur margin kiri menjadi otomatis */
+            margin-right: 0px; /* Mengatur margin kanan menjadi otomatis */
+            padding: 20px; /* Ubah nilai padding sesuai kebutuhan Anda */
+            
             text-align: center; /* Teks di tengah */
-            background-color: #333; /* Warna latar footer */
+            background-color: #0e0e0ee6; /* Warna latar footer */
             color: #fff; /* Warna teks footer */
         }
+
+
+#scrollToTopButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: #3498db; /* Warna biru */
+    border: none;
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    width: 40px;
+    margin: 0 auto;
+    padding: 15px; /* Menambahkan padding untuk efek hover */
+    border-radius: 50px; /* Agar tombol memiliki sudut yang melengkung */
+    transition: background 0.3s; /* Efek transisi saat hover */
+}
+
+#scrollToTopButton:hover {
+    background: #2980b9; /* Warna biru yang berbeda saat tombol dihover */
+}
+
+#scrollToTopButton i {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
 
         .card {
             display: flex;
@@ -197,16 +229,11 @@ nav li:hover > ul {
 
         /* ... (CSS setelahnya) */
 
-        footer {
-            width: auto; /* Menetapkan lebar 100% */
-            margin-left: 0px; /* Mengatur margin kiri menjadi otomatis */
-            margin-right: 0px; /* Mengatur margin kanan menjadi otomatis */
-            padding: 20px; /* Ubah nilai padding sesuai kebutuhan Anda */
-            
-            text-align: center; /* Teks di tengah */
-            background-color: #0e0e0ee6; /* Warna latar footer */
-            color: #fff; /* Warna teks footer */
-        }
+        
+        
+     
+
+        
 .floating-button {
     position: fixed;
     bottom: 20px;
@@ -280,6 +307,22 @@ nav li:hover > ul {
       }
     }
     
+     .bounce-animation {
+      animation: bounce 2s forwards;
+    }
+      @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-35px);
+      }
+      60% {
+        transform: translateY(-5px);
+      }
+    }
+
+    
     .navigation-buttons {
     text-align: center;
     margin-right: 20px;
@@ -323,7 +366,7 @@ nav li:hover > ul {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px;
+    margin: 0px;
 }
 
 .search-input {
@@ -337,13 +380,15 @@ nav li:hover > ul {
 .search-input input {
     padding: 10px;
     border: none;
-    border-radius: 5px 0 0 5px;
+    border-radius: 10px;
+    
 }
 
 .search-input button {
-    padding: 10px 20px;
+    padding: 10px;
     border: none;
-    border-radius: 20 10px 5px 0;
+    margin: 5px;
+    border-radius: 50px;
     cursor: pointer;
     background-color: #0084c5;
     color: #fff;
@@ -390,8 +435,10 @@ nav li:hover > ul {
     </div>
  <div class="search-card">
     <div class="search-input" id="searchInput" style="display:none;">
+           <div class="animated-text bounce-animation">
         <input type="text" placeholder="Cari...">
-        <button onclick="performSearch()">Cari</button>
+        <button onclick="performSearch()">🔎</button>
+        </div>
     </div>
     <button class="close-button" id="closeButton" onclick="hideCloseButton()">X</button>
 </div>
@@ -435,6 +482,7 @@ nav li:hover > ul {
         <img src="Gambar/header.jpg" alt="Deskripsi Gambar">
     </div>
 <br>
+ <div class="animated-text slide-fade-animation">
   <div class="navigation-container">
   <div class="navigation-buttons">
         <a href="Halaman/chat.html">Chat »</a>        
@@ -442,6 +490,7 @@ nav li:hover > ul {
         <a href="https://saweria.co/ehe79">Donasi</a>
         <a href="Halaman/AI.html">Komentar</a>
     </div>
+</div>
 </div>
 <br>
     <section>
@@ -796,7 +845,11 @@ Thanks to :<br>
                 <hr>
 !!WARNING!! VENDOR MOD MAY NOT WORKING IN STOCKROM<br><br>
 <hr>
-🔥Feature :<br>
+            </p>
+            <div id="hiddenContent5" style="display: none;">
+                
+                
+      🔥Feature :<br>
 
 - R/W Remountable
 
@@ -807,10 +860,7 @@ Thanks to :<br>
 - Change base to MIUI 14.0.3 ID
 
 - Revert fstab and lib to stock due to the latest TWRP release<br>
-
-
-            </p>
-            <div id="hiddenContent5" style="display: none;">
+         
                 <hr>
                📝 INSTALLATION<br>
 
@@ -929,7 +979,16 @@ Thanks to :<br>
 
     <!-- ... (Bagian HTML yang lain) -->
 
-    <footer> <p>&copy; 2023 Poco M5 Underground</p>
+<br>
+ <button id="scrollToTopButton"> 
+        <i class="fas fa-arrow-up"></i> </button>
+        
+    <footer> 
+        
+        
+        <p>&copy; 2023 Poco M5 Underground</p>
+   
+        
     </footer>
     <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -1060,7 +1119,18 @@ function toggleSearchInput() {
     } else {
         console.error("Elemen dengan id '" + id + "' atau '" + buttonId + "' tidak ditemukan.");
     }
-}</script>
+}
+
+<!-- script untuk footer -->
+
+document.getElementById('scrollToTopButton').addEventListener('click', function () {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+<!-- perbatasan -->
+</script>
 
 
 </body>
