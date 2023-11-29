@@ -1,5 +1,5 @@
 /* CSS untuk Tampilan Umum */
-@media only screen and (min-width: 760px) {
+@media only screen and (min-width: 767px) {
 
    /* ... (CSS sebelumnya) */
 
@@ -172,16 +172,19 @@ nav li:hover > ul {
 
         .card {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 220px;
-            padding: 10px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-             margin-bottom: 80px;
-            font-size: 20px;
+flex-direction: column;
+align-items: center;
+margin-left: auto;
+margin-right: auto;
+width: 85%;
+padding: 10px;
+border: 2px solid #ddd;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+margin-top: 20px;
+margin-bottom: 80px;
+font-size: 20px;
+
         }
 
         .card img {
@@ -193,12 +196,12 @@ nav li:hover > ul {
 
         .card-description {
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 2px;
         }
 
         .release-date {
             color: #555;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         .like-button {
@@ -391,6 +394,129 @@ nav li:hover > ul {
     right: 20px;
 }
 
+
+.info {
+  width: 55%;
+  height: auto;
+  padding: 20px;
+  border: 1px solid #00abff54;
+  border-radius: 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #02020284;
+  margin: auto; /* Menengahkan secara horizontal */
+  top: 75px;
+  transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  margin-bottom: 25px;
+}
+
+
+.info:hover {
+  box-shadow: 0 8px 16px rgba(255, 165, 0, 0.2);
+  background-color: #0d0d0eb9;
+}
+
+.info p, .info h3{
+  margin: 0;
+  margin-top: 20px;
+  line-height: 1.5;
+  color: white;
+  text-align: center;
+}
+
+
+
+.iconinf {
+    text-align: center;
+}
+
+.fas.fa-lightbulb {
+    color: #165883a3;
+    font-size: 80px;
+}
+
+.fas.fa-rocket{
+    color: #830500a3;
+    font-size: 80px;
+}
+
+.fas.fa-crown{
+    color: #836c37a3;
+    font-size: 80px;
+}
+
+.fas.fa-lock{
+    color: #008338a3;
+    font-size: 80px;
+}
+
+.Seputar {
+  width: 98%;
+  padding: 0px;
+  border: 1px solid #377e83a3;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #02020284;
+  margin: auto; /* Menengahkan secara horizontal */
+  top: 75px;
+  transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  margin-bottom: 2px;
+  margin-top: 2px;
+  color: white;
+  
+}
+
+
+.Seputar h3 {
+text-align: center;
+
+}
+
+/*untuk hiasan card halaman*/
+.custom-info {
+    width: 100%;
+    min-width: 225px; /* Sesuaikan dengan lebar minimum yang diinginkan */
+    max-width: 90%; /* Sesuaikan dengan lebar maksimum yang diinginkan */
+    margin: auto; /* Ini akan membuat card terpusat secara horizontal */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #151c32;
+    border: 1px solid #377e83a3;
+    display: flex; /* Membuat flex container */
+    flex-direction: column; /* Menata anak-anak secara vertikal */
+    align-items: center; /* Menyusun anak-anak ke tengah secara horizontal */
+}
+
+
+
+
+
+
+.custom-info .kunci {
+    font-size: 20px; 
+    color: #00ff42b4;
+}
+
+.custom-info .api {
+    font-size: 20px;
+    color: #ff0a00b4;
+}
+
+.custom-info .developer {
+    font-size: 20px;
+    color: #ffdfd5b4;
+}
+
+.custom-info .kalender {
+    font-size: 20px;
+    color: #80eaffb4;
+}
+
+
+.custom-info p {
+    margin: 5px 0; 
+    line-height: 1.5; 
+}
 
 
 

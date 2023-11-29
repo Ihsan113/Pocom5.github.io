@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poco m5 underground</title>
     <style>
-        @media only screen and (max-width: 768px) {
+        @media only screen and (max-width: 767px) {
 
         /* ... (CSS sebelumnya) */
 
@@ -156,7 +156,7 @@ nav li:hover > ul {
 
 
 #scrollToTopButton {
-    display: flex;
+    display: absolute;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -168,8 +168,9 @@ nav li:hover > ul {
     text-align: center;
     width: 40px;
     margin: 0 auto;
+    margin-bottom: 10px;
     padding: 15px; /* Menambahkan padding untuk efek hover */
-    border-radius: 50px; /* Agar tombol memiliki sudut yang melengkung */
+    border-radius: 20px; /* Agar tombol memiliki sudut yang melengkung */
     transition: background 0.3s; /* Efek transisi saat hover */
 }
 
@@ -179,7 +180,7 @@ nav li:hover > ul {
 
 #scrollToTopButton i {
     font-size: 15px;
-    margin-bottom: 5px;
+    margin-bottom: -5px;
 }
 
 
@@ -187,10 +188,10 @@ nav li:hover > ul {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 20px;
+            margin: 15px;
             padding: 15px;
             border: 2px solid #ddd;
-            border-radius: 5px;
+            border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
             
@@ -357,7 +358,7 @@ nav li:hover > ul {
 
 .search-icon {
     font-size: 18px;
-    color: #15cbff;
+    color: #c3c3d5e9;
     margin-right: 0px;
     top: 0px;
 }
@@ -411,7 +412,124 @@ nav li:hover > ul {
     right: 20px;
 }
 
+.info {
+  width: 82%;
+  padding: 20px;
+  border: 1px solid #00abff54;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #02020284;
+  margin: auto; /* Menengahkan secara horizontal */
+  top: 75px;
+  transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  margin-bottom: 25px;
+}
 
+
+.info:hover {
+  box-shadow: 0 8px 16px rgba(255, 165, 0, 0.2);
+  background-color: #0d0d0eb9;
+}
+
+.info p, h3 {
+  margin: 0;
+  line-height: 1.5;
+  color: white;
+  text-align: center;
+}
+
+
+
+.iconinf {
+    text-align: center;
+}
+
+.fas.fa-lightbulb {
+    color: #165883a3;
+    font-size: 80px;
+}
+
+.fas.fa-rocket{
+    color: #830500a3;
+    font-size: 80px;
+}
+
+.fas.fa-crown{
+    color: #836c37a3;
+    font-size: 80px;
+}
+
+.fas.fa-lock{
+    color: #008338a3;
+    font-size: 80px;
+}
+
+.Seputar {
+  width: 89%;
+  padding: 20px;  
+  border: 1px solid #377e83a3;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #02020284;
+  margin: auto; /* Menengahkan secara horizontal */
+  top: 75px;
+  transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  margin-bottom: 2px;
+  margin-top: 2px;
+  color: white;
+}
+
+
+/*untuk hiasan card halaman*/
+.custom-info {
+    width: 100%;
+    min-width: 225px; /* Sesuaikan dengan lebar minimum yang diinginkan */
+    max-width: 90%; /* Sesuaikan dengan lebar maksimum yang diinginkan */
+    margin: auto; /* Ini akan membuat card terpusat secara horizontal */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #151c32;
+    border: 1px solid #377e83a3;
+    display: flex; /* Membuat flex container */
+    flex-direction: column; /* Menata anak-anak secara vertikal */
+    align-items: center; /* Menyusun anak-anak ke tengah secara horizontal */
+}
+
+
+
+
+
+
+.custom-info .kunci {
+    font-size: 20px; 
+    color: #00ff42b4;
+}
+
+.custom-info .api {
+    font-size: 20px;
+    color: #ff0a00b4;
+}
+
+.custom-info .developer {
+    font-size: 20px;
+    color: #ffdfd5b4;
+}
+
+.custom-info .kalender {
+    font-size: 20px;
+    color: #80eaffb4;
+}
+
+
+.custom-info p {
+    margin: 5px 0; 
+    line-height: 1.5; 
+}
+
+
+
+/*untuk hiasan card halaman*/
 
 
 }
@@ -509,36 +627,38 @@ nav li:hover > ul {
         <div class="release-date">Rilis: 22 November 2023</div>
         <div class="card-description">
             <h3>MIUI Modded Lite</h3>
-            <p>
-                <hr>
-                📱 PROJECT NAME: MIUI Modded Lite<br>
-                🔥 VERSION: 14.0.5 ID (A13)<br>
-                👨‍💻 MODDER: Shine<br>
-                🗓 DATE: 16-11-2023<br>
-            </p>
-               <hr>
+            
+                              
+                <div class="custom-info">
+    <p><i class="fas fa-lock kunci"></i> PROJECT NAME: MIUI Modded Lite</p>
+    <p><i class="fas fa-fire api"></i> VERSION: 14.0.5 ID (A13)</p>
+    <p><i class="fas fa-user developer"></i> MODDER: Shine</p>
+    <p><i class="fas fa-calendar kalender"></i> DATE: 16-11-2023</p>
+
+
+
+
+        
            
             <div id="hiddenContent10" style="display: none;">                            
-              
-                📝 FLASHING INSTRUCTION:<br>
-                • Reboot into bootloader<br>
-                • fastboot devices<br>
-                • # Jika terdeteksi lanjut #<br>
-• fastboot reboot fastboot<br>
-
-• fastboot flash vendor vendor.img<br>
-
-• fastboot flash product product.img<br>
-
-• fastboot flash system system.img<br>
-
-• fastboot flash system_ext system_ext.img<br>
-
-• fastboot reboot recovery<br>
-
-• format data<br>
+              <hr>
+               
+    <h3>FLASHING INSTRUCTION:</h3>
+    <ul>
+        <li>Reboot into bootloader</li>
+        <li>fastboot devices</li>
+        <li># Jika terdeteksi lanjut #</li>
+        <li>fastboot reboot fastboot</li>
+        <li>fastboot flash vendor vendor.img</li>
+        <li>fastboot flash product product.img</li>
+        <li>fastboot flash system system.img</li>
+        <li>fastboot flash system_ext system_ext.img</li>
+        <li>fastboot reboot recovery</li>
+        <li>format data</li>
+    </ul>
 <hr>
             </div>
+           </div>
            
             <center> <button id="read-more10" onclick="toggleReadMore('hiddenContent10', 'read-more10')">Baca Selengkapnya</button></center>
         </div>
@@ -552,50 +672,48 @@ nav li:hover > ul {
         <div class="release-date">Rilis: 22 November 2023</div>
         <div class="card-description">
             <h3>MIUI Modded</h3>
-            <p>
-                <hr>
-                📱 PROJECT NAME: MIUI Modded<br>
-                🔥 VERSION: 14.0.5 ID (A13)<br>
-                👨‍💻 MODDER: Asmodeus7999<br>
-                🗓 DATE: 16-11-2023<br>
-            </p>
+            
+                          
+                <div class="custom-info">
+   <p><i class="fas fa-lock kunci"></i> PROJECT NAME: MIUI Modded</p>
+    <p><i class="fas fa-fire api"></i> VERSION: 14.0.5 ID (A13)</p>
+    <p><i class="fas fa-user developer"></i> MODDER: Asmodeus7999</p>
+    <p><i class="fas fa-calendar kalender"></i> DATE: 16-11-2023</p>
            
+             
+
             <div id="hiddenContent7" style="display: none;">
               
                 <hr>
-                🌟 HIGHLIGHTS:<br>
-               
-- Disable signature verification<br>
+             
+    <h3>HIGHLIGHTS:</h3>
+    <ul>
+        <li>Disable signature verification</li>
+        <li>Disable flag secure</li>
+        <li>Change the launcher into Miui Launcher mod</li>
+        <li>Change theme manager with theme manager mod</li>
+        <li>Change camera, file manager, calculator, gallery, control center with HyperOS apps</li>
+        <li>Change Security with Security mod</li>
+        <li>Change screen recorder with more bitrate option and frame rate option, and this app fixed low sound on the result video</li>
+        <li>Add advanced reboot</li>
+        <li>Debloating some apps</li>
+        <li>Remove thermald and thermal hal 2.0 mtk</li>
+        <li>Add performance slider on battery settings</li>
+    </ul>
+    <hr>
+    <h3>FLASHING INSTRUCTION:</h3>
+    <ol>
+        <li>Reboot into recovery</li>
+        <li>Flash the rom</li>
+        <li>Format Data</li>
+        <li>Reboot System</li>
+    </ol>
 
-- Disable flag secure <br>
 
-- Change the launcher into Miui Launcher mod <br>
-
-- Change theme manager with theme manager mod <br>
-
-- Change camera, file manager, calculator, gallery, control center with HyperOS apps<br>
-
-- Change Security with Security mod<br>
-
-- Change screen recorder with more bitrate option and frame rate option, and this app fixed low sound on the result video<br>
-
-- Add advanced reboot<br>
-
-- Debloating some apps<br>
-
-- Remove thermald and thermal hal 2.0 mtk<br>
-
-- Add performance slider on battery settings<br>
-
-
-                <hr>
-                📝 FLASHING INSTRUCTION:<br>
-                • Reboot into recovery<br>
-                • Flash the rom<br>
-                • Format Data<br>
-                • Reboot System<br>
             </div>
-            <hr>
+            </div>
+            
+           
             <center> <button id="read-more7" onclick="toggleReadMore('hiddenContent7', 'read-more7')">Baca Selengkapnya</button></center>
         </div>
         <br>
@@ -607,36 +725,41 @@ nav li:hover > ul {
         <div class="release-date">Rilis: 01 Januari 2023</div>
         <div class="card-description">
             <h3>MIUI Modded</h3>
-            <p>
-                <hr>
-                📱 PROJECT NAME: MIUI Modded<br>
-                🔥 VERSION: 14.0.5 ID (A13)<br>
-                👨‍💻 MODDER: Asmodeus7999<br>
-                🗓 DATE: 16-11-2023<br>
-            </p>
-             <hr>
+            
+                               
+                <div class="custom-info">
+    <p><i class="fas fa-lock kunci"></i> PROJECT NAME: MIUI Modded</p>
+    <p><i class="fas fa-fire api"></i> VERSION: 14.0.5 ID (A13)</p>
+    <p><i class="fas fa-user developer"></i> MODDER: Shine</p>
+    <p><i class="fas fa-calendar kalender"></i> DATE: 16-11-2023</p>
+    
+   
             <div id="hiddenContent1" style="display: none;">
               
-               
-                🌟 HIGHLIGHTS:<br>
-                • Fix theme bug (thx to @vawnanh2801)<br>
-                • Change camera to Leica Camera<br>
-                • Add Security app modded by Kashi
-                
-                <hr>
-                📝 FLASHING INSTRUCTION:<br>
-                • Reboot into recovery<br>
-                • Flash the rom<br>
-                • Format Data<br>
-                • Reboot System<br>                
-               <hr>
-               <br>
+      <hr>        
+    <h3>HIGHLIGHTS:</h3>
+    <ul>
+        <li>Fix theme bug (thx to @vawnanh2801)</li>
+        <li>Change camera to Leica Camera</li>
+        <li>Add Security app modded by Kashi</li>
+    </ul>
+    <hr>
+    <h3>FLASHING INSTRUCTION:</h3>
+    <ol>
+        <li>Reboot into recovery</li>
+        <li>Flash the rom</li>
+        <li>Format Data</li>
+        <li>Reboot System</li>
+    </ol>
+
+
                 
                 <a href="Halaman/miuimod1.html" class="like-button"><i class="fas fa-eye"></i></a> </body>
        
             </div>
-            
-             <br>
+            </div>
+             
+             
             <center> <button id="read-more1" onclick="toggleReadMore('hiddenContent1', 'read-more1')">Baca Selengkapnya</button></center>
           
         </div>
@@ -649,34 +772,48 @@ nav li:hover > ul {
         <div class="release-date">Rilis: 01 Januari 2023</div>
         <div class="card-description">
             <h3>RisingOS</h3>
-            <p>
-                <hr>
-📱 PROJECT NAME: RisingOS<br>
-🔥 VERSION: 1.4 Elysium (A13)<br>
-👨‍💻 DEVELOPER: michionle & HOAMSI<br>
-🗓 DATE: 23-10-2023<br>
-            </p>
-           <hr> 
+            
+                      
+                <div class="custom-info">
+    <p><i class="fas fa-lock kunci"></i> PROJECT NAME: RisingOS</p>
+    <p><i class="fas fa-fire api"></i> VERSION: 1.4 Elysium (A13)</p>
+    <p><i class="fas fa-user developer"></i> MODDER: michionle & HOAMSI</p>
+    <p><i class="fas fa-calendar kalender"></i> DATE: 23-10-2023</p>
+    
+           
+         
+   
+           
             <div id="hiddenContent2" style="display: none;">
                
-                🌟 HIGHLIGHTS:<br>
-• Update September Security Patch<br>
-• Fix DT2W<br>
-• Disable DroidGuard on boot<br>
-• Merge vendor to MIUI 14.0.5 ID with removed<br> Thermal Hal 2.0 mtk service<br>
-<hr>
-🗑 BUGS:<br>
-• Safetynet and Play integrity failed and can't fix with magisk module
-<hr>
-📝 FLASHING INSTRUCTION:<br>
-• Reboot into recovery<br>
-• Flash the rom<br>
-• Format Data<br>
-• Reboot System<br>
-<br>
-Thanks to :
-- Anyone who helping devs for testing the ROM.
-<hr>
+             
+    <h3>HIGHLIGHTS:</h3>
+    <hr>
+    <ul>       
+        <li>Update September Security Patch</li>
+        <li>Fix DT2W</li>
+        <li>Disable DroidGuard on boot</li>
+        <li>Merge vendor to MIUI 14.0.5 ID with removed Thermal Hal 2.0 mtk service</li>
+    </ul>
+    <hr>
+    <h3>BUGS:</h3>
+    <ul>
+        <li>Safetynet and Play integrity failed and can't fix with magisk module</li>
+    </ul>
+    <hr>
+    <h3>FLASHING INSTRUCTION:</h3>
+    <ol>
+        <li>Reboot into recovery</li>
+        <li>Flash the rom</li>
+        <li>Format Data</li>
+        <li>Reboot System</li>
+    </ol>
+     <hr>
+    <p>Thanks to:</p>
+    <ul>
+        <li>Anyone who helped devs for testing the ROM.</li>
+    </ul>
+              </div>
             </div>
             <center> <button id="read-more2" onclick="toggleReadMore('hiddenContent2', 'read-more2')">Baca Selengkapnya</button></center>
         </div>
@@ -690,45 +827,51 @@ Thanks to :
         <div class="release-date">Rilis: 01 Januari 2023</div>
         <div class="card-description">
             <h3>HavocOS</h3>
-            <p>
-                <hr>
-📱 PROJECT NAME: HavocOS<br>
-
-🔥 VERSION: 6.0 (A13)<br>
-
-👨‍💻 DEVELOPER: HOAMSI<br>
-
-🗓 DATE: 12-10-2023<br>
-            </p>
+            
+                       
+                <div class="custom-info">
+      <p><i class="fas fa-lock kunci"></i> PROJECT NAME: HavocOS</p>
+    <p><i class="fas fa-fire api"></i> VERSION: 6.0 (A13)</p>
+    <p><i class="fas fa-user developer"></i> MODDER: HOAMSI</p>
+    <p><i class="fas fa-calendar kalender"></i> DATE: 12-10-2023</p>
+    
+            
+             
+           
             <div id="hiddenContent4" style="display: none;">
-                <hr>
-                🌟 HIGHLIGHTS:<br>
-• KernelSU 0.6.2 Kernel version update to 5.10.177<br>
+               <hr>
 
-• Included Per-app FPS controler<br>
+<h3>HIGHLIGHTS:</h3>
+<ul>
+    <li>KernelSU 0.6.2 Kernel version update to 5.10.177</li>
+    <li>Included Per-app FPS controller</li>
+    <li>Mi Sound Enhance added</li>
+</ul>
+<hr>
 
-• Mi Sound Enhance added<br>
+<h3>BUGS:</h3>
+<ul>
+    <li>D2TW not working</li>
+    <li>Safetynet and Play integrity failed and can't fix with magisk module</li>
+    <li>Can't turn off auto hide network monitor</li>
+</ul>
+<hr>
+
+<h3>FLASHING INSTRUCTION:</h3>
+<ol>
+    <li>Reboot into recovery</li>
+    <li>Flash the ROM</li>
+    <li>Format Data</li>
+    <li>Reboot System</li>
+</ol>
 
 <hr>
-🗑 BUGS:<br>
+<p>Thanks to:</p>
+<ul>
+    <li>Anyone who helped devs for testing the ROM.</li>
+</ul>
 
-• D2TW not working<br>
-
-• Safetynet and Play integrity failed and can't fix with magisk module<br>
-
-• Can't turn off auto hide network monitor<br>
-
-<hr>
-📝 FLASHING INSTRUCTION:<br>
-• Reboot into recovery<br>
-• Flash the rom<br>
-• Format Data<br>
-• Reboot System<br>
-<br>
-Thanks to :<br>
-- Anyone who helping devs for testing the ROM.
-
-<hr>
+            </div>
             </div>
             <center> <button id="read-more4" onclick="toggleReadMore('hiddenContent4', 'read-more4')">Baca Selengkapnya</button></center>
         </div>
@@ -743,52 +886,55 @@ Thanks to :<br>
         <div class="release-date">Rilis: 01 Januari 2023</div>
         <div class="card-description">
             <h3>CherishOS</h3>
-            <p>
-                <hr>
-📱 PROJECT NAME: CherishOS<br>
-
-🔥 VERSION: 4.11 (A13)<br>
-
-👨‍💻 DEVELOPER: HOAMSI<br>
-
-🗓 DATE: 10-09-2023<br>
-            </p>
+          <div class="custom-info">
+    <p><i class="fas fa-lock kunci"></i> PROJECT NAME: CherishOS</p>
+    <p><i class="fas fa-fire api"></i> VERSION: 4.11 (A13)</p>
+    <p><i class="fas fa-user developer"></i> MODDER: HOAMSI</p>
+    <p><i class="fas fa-calendar kalender"></i> DATE: 10-09-2023</p>
+    
             <div id="hiddenContent3" style="display: none;">
-                <hr>
-                🌟 HIGHLIGHTS:<br>
-• KernelSU 0.6.7 Kernel version update to 5.10.185 compiled by @rootuid<br>
+              <hr>
 
-• Included Per-app FPS controler<br>
-
-• Mi Sound Enhance added<br>
-
-• No Thermal services running<br>
+<h3>HIGHLIGHTS:</h3>
+<ul>
+    <li>KernelSU 0.6.7 Kernel version update to 5.10.185 compiled by @rootuid</li>
+    <li>Included Per-app FPS controller</li>
+    <li>Mi Sound Enhance added</li>
+    <li>No Thermal services running</li>
+</ul>
 <hr>
 
-✅ CHANGELOG :<br>
-
-• Fix Statusbar UI<br>
-
-• Fix Framerate bug on boot (maybe)<br>
-
+<h3>CHANGELOG:</h3>
+<ul>
+    <li>Fix Statusbar UI</li>
+    <li>Fix Framerate bug on boot (maybe)</li>
+</ul>
 <hr>
-🗑 BUGS:<br>
 
-• D2TW not working<br>
-
-• Safetynet and Play integrity failed and can't fix with magisk module<br>
-
+<h3>BUGS:</h3>
+<ul>
+    <li>D2TW not working</li>
+    <li>Safetynet and Play integrity failed and can't fix with magisk module</li>
+</ul>
 <hr>
-📝 FLASHING INSTRUCTION:<br>
-• Reboot into recovery<br>
-• Flash the rom<br>
-• Format Data<br>
-• Reboot System<br>
+
+<h3>FLASHING INSTRUCTION:</h3>
+<ol>
+    <li>Reboot into recovery</li>
+    <li>Flash the ROM</li>
+    <li>Format Data</li>
+    <li>Reboot System</li>
+</ol>
 <br>
-Thanks to :<br>
-- Anyone who helping devs for testing the ROM.
-
 <hr>
+<p>Thanks to:</p>
+<ul>
+    <li>Anyone who helped devs for testing the ROM.</li>
+</ul>
+
+
+
+            </div>
             </div>
             <center> <button id="read-more3" onclick="toggleReadMore('hiddenContent3', 'read-more3')">Baca Selengkapnya</button></center>
         </div>
@@ -802,41 +948,52 @@ Thanks to :<br>
         <div class="release-date">Rilis: 01 Januari 2023</div>
         <div class="card-description">
             <h3>PixelOS</h3>
-            <p>
-                <hr>
-                📱 PROJECT NAME: PixelOS<br>
-                🔥 VERSION: (A13)<br>
-                👨‍💻 DEVELOPER: MisterZtr<br>
-                🗓 DATE: 29-08-2023<br>
-            </p>
+          
+                
+                           <div class="custom-info">
+      <p><i class="fas fa-lock kunci"></i> PROJECT NAME: PixelOS</p>
+    <p><i class="fas fa-fire api"></i> VERSION: (A13)</p>
+    <p><i class="fas fa-user developer"></i> MODDER: MisterZtr</p>
+    <p><i class="fas fa-calendar kalender"></i> DATE: 29-08-2023</p>
+           
+           
            
             <div id="hiddenContent6" style="display: none;">
               
-                <hr>
-                🌟 HIGHLIGHTS:<br>
-               • KernelSU 0.6.7 Kernel version update to 5.10.185 compiled by @rootuid<br>
-                • Included Per-app FPS controler<br>
-               • Mi Sound Enhance added<br>
-               
-               <hr>
-               🗑 BUGS:<br>
+              <hr>
+    <h3>HIGHLIGHTS:</h3>
+    <ul>
+        <li>KernelSU 0.6.7 Kernel version update to 5.10.185 compiled by @rootuid</li>
+        <li>Included Per-app FPS controller</li>
+        <li>Mi Sound Enhance added</li>
+    </ul>
 
-• D2TW not working<br>
-
-• Safetynet and Play integrity failed and can't fix with magisk module<br>
-
-• Bluetooth audio bug<br>
+<hr>
 
 
-                
-                <hr>
-                📝 FLASHING INSTRUCTION:<br>
-                • Reboot into recovery<br>
-                • Flash the rom<br>
-                • Format Data<br>
-                • Reboot System<br>
+    <h3>BUGS:</h3>
+    <ul>
+        <li>D2TW not working</li>
+        <li>Safetynet and Play integrity failed and can't fix with magisk module</li>
+        <li>Bluetooth audio bug</li>
+    </ul>
+
+<hr>
+
+
+    <h3>FLASHING INSTRUCTION:</h3>
+    <ol>
+        <li>Reboot into recovery</li>
+        <li>Flash the ROM</li>
+        <li>Format Data</li>
+        <li>Reboot System</li>
+    </ol>
+
+<br>
+
             </div>
-            <hr>
+            </div>
+           
             <center> <button id="read-more6" onclick="toggleReadMore('hiddenContent6', 'read-more6')">Baca Selengkapnya</button></center>
         </div>
         <br>
@@ -848,13 +1005,17 @@ Thanks to :<br>
         <div class="release-date">Rilis: 01 Januari 2023</div>
         <div class="card-description">
             <h3>vendor mod for POCO M5 v0.3</h3>
-            <p>
-                <hr>
-!!WARNING!! VENDOR MOD MAY NOT WORKING IN STOCKROM<br><br>
-<hr>
+            <div class="custom-info">
+                <p>
+!!WARNING!! VENDOR MOD MAY NOT WORKING IN STOCKROM
+
             </p>
+            
+            
+            
             <div id="hiddenContent5" style="display: none;">
                 
+                <hr>
                 
       🔥Feature :<br>
 
@@ -892,8 +1053,10 @@ Thanks to :<br>
 Thanks to :<br>
 - Anyone who helping devs for testing the ROM.
 
-<hr>
+
             </div>
+            </div>
+            
             <center> <button id="read-more5" onclick="toggleReadMore('hiddenContent5', 'read-more5')">Baca Selengkapnya</button></center>
         </div>
         <br>
@@ -909,13 +1072,13 @@ Thanks to :<br>
         <div class="release-date">Rilis: 01 Januari 2023</div>
         <div class="card-description">
             <h3>vendor mod for POCO M5 v0.4</h3>
+            <div class="custom-info">
             <p>
-                <hr>
-!!WARNING!! THIS VENDOR MOD MAY NOT WORKING IN RO ROM FOR EXAMPLE STOCKROM AND SOME CUSTOM ROM, SO MAKE SURE UR ROM IS RW<br>
-<hr>
+                
+!!WARNING!! THIS VENDOR MOD MAY NOT WORKING IN RO ROM FOR EXAMPLE STOCKROM AND SOME CUSTOM ROM, SO MAKE SURE UR ROM IS RW
             </p>
             <div id="hiddenContent9" style="display: none;">
-               
+               <hr>
               🔥 Feature :<br>
 
 - R/W Remountable<br>
@@ -937,7 +1100,8 @@ Thanks to :<br>
 Thanks to :<br>
 - Anyone who helping devs for testing the ROM.
 
-<hr>
+
+            </div>
             </div>
             <center> <button id="read-more9" onclick="toggleReadMore('hiddenContent9', 'read-more9')">Baca Selengkapnya</button></center>
         </div>
@@ -950,14 +1114,15 @@ Thanks to :<br>
         <div class="release-date">Rilis: 01 Januari 2023</div>
         <div class="card-description">
             <h3>vendor mod for POCO M5 v0.5</h3>
+            <div class="custom-info">
             <p>
-                <hr>
-!!WARNING!! IF FACING ISSUE BOOTLOOPING IN TWRP JUST REFLASH PREVIOUS VENDOR / DIRTY FLASH UR CUSTOM ROM / STOCKROM<br><br>
-<hr>
+                
+!!WARNING!! IF FACING ISSUE BOOTLOOPING IN TWRP JUST REFLASH PREVIOUS VENDOR / DIRTY FLASH UR CUSTOM ROM / STOCKROM
+
 
             </p>
             <div id="hiddenContent8" style="display: none;">
-                
+                <hr>
                 🔥Feature :<br>
 
 - As requested by member to remove all thermal service in vendor. So I remove mi_thermald, thermal_core, and vendor.thermal-hal-2-0.mtk. Also try to remove ro.vendor.mtk_thermal_2_0 prop hope it have an effects.<br>
@@ -973,7 +1138,7 @@ Thanks to :<br>
 Thanks to :<br>
 - Anyone who helping devs for testing the ROM.
 
-<hr>
+   </div>
    </div>
             <center> <button id="read-more8" onclick="toggleReadMore('hiddenContent8', 'read-more8')">Baca Selengkapnya</button></center>
         </div>
@@ -981,10 +1146,72 @@ Thanks to :<br>
         <a href="https://besargaji.com/YVlit4" class="like-button">Download (zip)</a>
     </div>
     
+    
+    
+    <br>
+    <br>
     <!-- perbatasan -->
     </section>
+   <br>
+   
+    
+ <div class="Seputar">
+  <h3> Semua yang Anda butuhkan untuk pengalaman baru </h3>
+  <br>
+  
+  <div class="info">
+       <h3>Selamat tinggal bloatware</h3>
+       <br>
+ <div class="iconinf">
+    <i class="fas fa-lightbulb"></i>
+</div>
 
-    <!-- ... (Bagian HTML yang lain) -->
+ <br>
+<p>
+   Berbeda dengan stok yang membuat sistem terengah-engah</p>
+</div>
+
+  
+ <div class="info">
+    <h3>Tidak ada lagi gimmick</h3>
+     <br>
+    <div class="iconinf">
+        <i class="fas fa-rocket"></i> <!-- Contoh ikon "rocket" -->
+    </div>
+    <br>
+    <p>        
+Menyediakan fitur tambahan yang dapat berguna
+    </p>
+</div>
+
+  
+ <div class="info">
+    <h3>Seperti Bos</h3>
+    <br>
+    <div class="iconinf">
+        <i class="fas fa-crown"></i> <!-- Ikon mahkota -->
+    </div>
+    <br>
+    <p>
+        Kebebasan untuk menyesuaikan tema dan penyesuaian tambahan
+    </p>
+</div>
+
+
+  
+ <div class="info">
+    <h3>Menghormati privasi</h3>
+    <br>
+    <div class="iconinf">
+        <i class="fas fa-lock"></i> <!-- Ikon gembok -->
+    </div>
+    <br>
+    <p>
+        Mengontrol pengaturan ponsel secara mandiri
+    </p>
+</div>
+
+</div>
 
 <br>
  <button id="scrollToTopButton"> 
