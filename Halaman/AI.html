@@ -25,10 +25,10 @@
 
         .container {
             background-color: #1d1d1de4;
-            padding: 45px;
+            padding: 15px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 95%;
+            width: 350px;
             text-align: center;
             color: white;
             border: 1px solid #ddd;
@@ -50,13 +50,15 @@
         }
 
         input, textarea {
-            margin-bottom: 16px;
-            padding: 8px;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            width: 100%;
-            box-sizing: border-box;
-        }
+    
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    width: 250px;
+    margin: 0 auto;  /* Menetapkan margin atas dan bawah ke 0, dan margin kiri-kanan otomatis */
+    box-sizing: border-box;
+}
+
 
         button {
     padding: 10px;
@@ -221,7 +223,7 @@ li hr {
 <body>
          <nav>
         <header>
-            <h1>Poco M5</h1>
+            <h3>Poco M5</h3>
             <div class="hamburger">&#9776;</div>
             <div class="close-menu">&#10006;</div>
             
@@ -246,7 +248,7 @@ li hr {
 
             <label for="comment">Komentar:</label>
             <textarea id="comment" rows="4" required></textarea>
-
+<br>
        <center><button type="button" onclick="submitComment()">Kirim Komentar</button>
        </center>
             <div class="loading"></div>

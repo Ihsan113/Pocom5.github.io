@@ -396,9 +396,9 @@ font-size: 20px;
 
 
 .info {
-  width: 55%;
-  height: 15vh;
-  padding: 20px;
+  width: 50%;
+  height: auto;
+  padding: 25px;
   border: 1px solid #00abff54;
   border-radius: 50px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -416,8 +416,9 @@ font-size: 20px;
 }
 
 .info p, .info h3{
-  margin: 0;
-  margin-top: 20px;
+  margin: auto;
+  margin-top: auto;
+  margin-bottom: auto;
   line-height: 1.5;
   color: white;
   text-align: center;
@@ -529,6 +530,15 @@ text-align: center;
     transition: width 0.3s; /* Efek transisi saat memanjang */
 }
 /*scroll*/
+#user-info {
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 3px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 14px;
+      margin: 10px;
+    }
 
 
 }

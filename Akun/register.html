@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firebase Registration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+     .card {
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px;
+      text-align: center;
+    }
+
+    .card h1 {
+      color: #333;
+    }
+
+    .card label {
+      display: block;
+      margin: 10px 0 5px;
+      color: #555;
+    }
+
+    .card input {
+      width: auto;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #030303;
+      border-radius: 4px;
+    }
+
+    .card button {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .card button:hover {
+      background-color: #45a049;
+    }
+
+    .card p {
+      margin-top: 15px;
+      color: black;
+    }
+
+    .card a {
+      color: #4caf50;
+      text-decoration: none;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
+    }
+
+    .error-message {
+      color: red;
+      margin-top: 5px;
+    }
+  </style>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBDyxki3rjsAAHnobAkLX8AoP6xcKeSdKM",
+      authDomain: "fast-circle-387914.firebaseapp.com",
+      databaseURL: "https://fast-circle-387914-default-rtdb.firebaseio.com",
+      projectId: "fast-circle-387914",
+      storageBucket: "fast-circle-387914.appspot.com",
+      messagingSenderId: "621262963505",
+      appId: "1:621262963505:web:988f3b4aa1be74ed1a2610",
+      measurementId: "G-0HJPRZZBJB"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    async function register() {
+      const nama = document.getElementById('nama').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        if (password.length < 6) {
+          throw new Error('Sandi harus memiliki setidaknya 6 karakter.');
+        }
+
+        const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+        const user = userCredential.user;
+
+        // Menetapkan nama pengguna ke objek pengguna
+        await user.updateProfile({
+          displayName: nama
+        });
+
+        console.log('Pendaftaran berhasil:', user);
+
+        // Alihkan ke halaman login setelah pendaftaran berhasil
+        window.location.href = "login.html";
+      } catch (error) {
+        console.error('Kesalahan pendaftaran:', error.message);
+        const errorMessageElement = document.getElementById('error-message');
+        if (errorMessageElement) {
+          errorMessageElement.textContent = error.message;
+        } else {
+          alert('Pendaftaran gagal. ' + error.message);
+        }
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div class="card">
+    <h2>Halaman Pendaftaran</h2>
+
+    <form id="register-form" onsubmit="event.preventDefault(); register();">
+      <label for="nama">Nama:</label>
+      <input type="text" id="nama" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+
+      <label for="password">Sandi:</label>
+      <input type="password" id="password" required>
+      <span id="error-message" class="error-message"></span>
+<br>
+      <button type="submit">Daftar</button>
+    </form>
+
+    <p>Sudah memiliki akun? <a href="login.html">Masuk</a></p>
+  </div>
+</body>
+
+</html>
