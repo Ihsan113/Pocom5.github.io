@@ -252,7 +252,7 @@ font-size: 20px;
     transition: max-height 0.5s ease; /* Animasi perubahan ketinggian */
 }
 
-#read-more1, #read-more2, #read-more3, #read-more4, #read-more5, #read-more6, #read-more7, #read-more8, #read-more9, #read-more10 {
+#read-more1, #read-more2, #read-more3, #read-more4, #read-more5, #read-more6, #read-more7, #read-more8, #read-more9, #read-more10, #read-more11 {
     display: block;
     margin-top: 10px;
     cursor: pointer;
@@ -397,7 +397,7 @@ font-size: 20px;
 
 .info {
   width: 55%;
-  height: auto;
+  height: 15vh;
   padding: 20px;
   border: 1px solid #00abff54;
   border-radius: 50px;
@@ -518,7 +518,17 @@ text-align: center;
     line-height: 1.5; 
 }
 
-
+/*scroll*/
+#scrollIndicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 5px; /* Sesuaikan dengan ketebalan yang diinginkan */
+    background-color: #3498db; /* Sesuaikan dengan warna yang diinginkan */
+    width: 0;
+    transition: width 0.3s; /* Efek transisi saat memanjang */
+}
+/*scroll*/
 
 
 }
