@@ -31,6 +31,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(function(OneSignal) {
+    OneSignal.init({
+      appId: "31819431-473c-45b8-857a-3691edad7fbd",
+    });
+  });
+</script>
+
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1363,6 +1373,12 @@ Menyediakan fitur tambahan yang dapat berguna
     <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
     
     <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+    
+    
+   
+   
+    
+    
     <script>
         
         
@@ -1542,6 +1558,7 @@ document.addEventListener("scroll", function() {
   // Inisialisasi Firebase
   firebase.initializeApp(firebaseConfig);
   const database = firebase.database();
+  
 
   // Referensi database
   const visitorsRef = firebase.database().ref("visitors");
@@ -1676,6 +1693,9 @@ function displayUserInfo(user) {
 function signOut() {
   firebase.auth().signOut();
 }
+
+
+
 
 
 </script>

@@ -4,7 +4,7 @@
 <head>
   <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +21,7 @@
       height: 100vh;
     }
 
-     .card {
+    .card {
       background-color: #fff;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       padding: 20px;
@@ -30,7 +30,7 @@
       text-align: center;
     }
 
-    .card h1 {
+    .card h2 {
       color: #333;
     }
 
@@ -115,8 +115,12 @@
 
         console.log('Pendaftaran berhasil:', user);
 
-        // Alihkan ke halaman login setelah pendaftaran berhasil
-        window.location.href = "login.html";
+        // Kirim email verifikasi
+        await user.sendEmailVerification();
+
+        // Tampilkan pesan berhasil dan arahkan pengguna ke halaman verifikasi
+        alert('Pendaftaran berhasil. Silakan verifikasi email Anda.');
+        window.location.href = "autentikasi 2 faktor.html"; // Gantilah dengan halaman verifikasi yang sesuai
       } catch (error) {
         console.error('Kesalahan pendaftaran:', error.message);
         const errorMessageElement = document.getElementById('error-message');
@@ -144,7 +148,7 @@
       <label for="password">Sandi:</label>
       <input type="password" id="password" required>
       <span id="error-message" class="error-message"></span>
-<br>
+      <br>
       <button type="submit">Daftar</button>
     </form>
 

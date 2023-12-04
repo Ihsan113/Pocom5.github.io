@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Page</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Welcome to the Admin Page</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="logged-in-users">
+      <!-- Tempat untuk menampilkan daftar pengguna yang login -->
+    </tbody>
+  </table>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBDyxki3rjsAAHnobAkLX8AoP6xcKeSdKM",
+      authDomain: "fast-circle-387914.firebaseapp.com",
+      databaseURL: "https://fast-circle-387914-default-rtdb.firebaseio.com",
+      projectId: "fast-circle-387914",
+      storageBucket: "fast-circle-387914.appspot.com",
+      messagingSenderId: "621262963505",
+      appId: "1:621262963505:web:b522b47999e196fc1a2610",
+      measurementId: "G-QHE7BHYJMK"
+    };
+
+    const firebaseApp = firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const database = firebase.database();
+
+    // Mendengarkan perubahan pada status login pengguna
+    auth.onAuthStateChanged((user) => {
+      const loggedInUsersBody = document.getElementById('logged-in-users');
+
+      if (loggedInUsersBody) {
+        if (user) {
+          const userRow = document.createElement('tr');
+          const userStatusRef = database.ref(`/status/${user.uid}`);
+
+          userRow.innerHTML = `
+            <td>${user.email}</td>
+            <td>${user.displayName || 'N/A'}</td>
+            <td><button onclick="deleteUser('${user.uid}', '${user.email}')">Delete Account</button></td>
+          `;
+          loggedInUsersBody.appendChild(userRow);
+
+          // Mendengarkan perubahan pada status pengguna
+          userStatusRef.on('value', (snapshot) => {
+            // Tidak perlu menampilkan status online/offline
+          });
+
+          // Set status awal pengguna
+          userStatusRef.once('value', (snapshot) => {
+            // Tidak perlu menampilkan status online/offline
+          });
+
+          // Jika pengguna terputus, hapus baris dari tabel
+          userStatusRef.onDisconnect().remove();
+        } else {
+          // Clear the table body if no users are logged in
+          loggedInUsersBody.innerHTML = '';
+        }
+      }
+    });
+
+    // Function to delete a user's account
+    function deleteUser(uid, email) {
+      if (confirm(`Are you sure you want to delete the account of ${email}?`)) {
+        auth.currentUser.delete()
+          .then(() => {
+            alert(`Account of ${email} deleted successfully.`);
+          })
+          .catch((error) => {
+            console.error('Error deleting user:', error);
+            alert('Error deleting user. Please try again later.');
+          });
+      }
+    }
+  </script>
+</body>
+
+</html>
