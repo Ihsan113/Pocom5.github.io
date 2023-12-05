@@ -65,6 +65,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             min-height: 100vh;
             overflow-x: hidden;
             background-color: #0d0d0df4;
+            color: white;
         }
 
         header {
@@ -299,7 +300,7 @@ nav li:hover > ul {
     transition: max-height 0.5s ease; /* Animasi perubahan ketinggian */
 }
 
-#read-more1, #read-more2, #read-more3, #read-more4, #read-more5, #read-more6, #read-more7, #read-more8, #read-more9, #read-more10, #read-more11 {
+button[id^="read-more"] {
     display: block;
     margin-top: 10px;
     cursor: pointer;
@@ -585,7 +586,10 @@ nav li:hover > ul {
       font-size: 14px;
       margin: 10px;
     }
-
+    
+    
+  
+     
 
 }
 
@@ -687,7 +691,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         
          <div class="animated-text slide-fade-animation"> <p style="font-family: 'Roboto', sans-serif;">pilih cusrom poco m5 dibawah,download sekarang.</p></div>
          
-         
+          <div id="publicContentContainer">
+        <!-- Hasil input dari halaman dashboard akan ditampilkan di sini -->
+    </div>
    
      <div class="card">
         <img src="Gambar/foto 6.jpg" alt="Card Image 1">
@@ -733,7 +739,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
            </div>
            
-            <center> <button id="read-more11" onclick="toggleReadMore('hiddenContent11', 'read-more10')">Baca Selengkapnya</button></center>
+            <center> <button id="read-more11" onclick="toggleReadMore('hiddenContent11', 'read-more11')">Baca Selengkapnya</button></center>
         </div>
         <br>
         <a href="https://sourceforge.net/projects/pixelos-pocom5/files/PixelOS_stone-13.0-20231203.zip/download" class="like-button">Download</a>
@@ -1285,6 +1291,11 @@ Thanks to :<br>
  
     <!-- perbatasan -->
     </section>
+    <br>
+   
+    
+    
+    
    
    <br>
     
@@ -1694,9 +1705,30 @@ function signOut() {
   firebase.auth().signOut();
 }
 
+<!-- perbatasan -->
 
+ const contentRef = database.ref('content');
 
+        // Function to display the inputted content
+        // Function to display the inputted content
+function showPublicContent(content) {
+    const publicContentContainer = document.getElementById('publicContentContainer');
+    // Menggunakan insertAdjacentHTML agar kontennya ditambahkan di bagian paling atas
+    publicContentContainer.insertAdjacentHTML('afterbegin', content);
+}
 
+// Load data from Firebase when the page loads
+document.addEventListener('DOMContentLoaded', function () {
+    contentRef.on('child_added', function (snapshot) {
+        const { content } = snapshot.val();
+        let htmlContent = '';
+
+        htmlContent += `<p>${content}</p>`;
+
+        // Display the results on the public page
+        showPublicContent(htmlContent);
+    });
+});
 
 </script>
 
