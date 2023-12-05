@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Title</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center; /* Center the content */
+        }
+
+        .dashboard-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .full-width-input,
+        .full-width-textarea,
+        .full-width-button {
+            width: calc(100% - 20px);
+            margin: 0 auto;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        .full-width-textarea {
+            height: 350px; /* Adjust as needed */
+        }
+
+        .full-width-button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .full-width-button:hover {
+            background-color: #45a049;
+        }
+
+        .publishing-text,
+        .loading-icon {
+            display: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .publishing-animation {
+            animation: fadeInOut 1s ease-in-out infinite;
+        }
+
+        .loading-icon {
+            margin-left: 10px;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .salin {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .salin button {
+            width: 150px;
+            padding: 10px;
+            box-sizing: border-box;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .salin button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    
+<h2>Halaman privat</h2>
+    <div class="dashboard-form">
+        <div class="form-group">
+            <label for="postContent">Post Content:</label>
+            <textarea id="postContent" class="full-width-textarea" placeholder="Enter your post content"></textarea>
+        </div>
+
+        <div class="form-group">
+            <div class="publishing-text" id="publishingText">Processing...</div>
+            <div class="loading-icon" id="loadingIcon">Loading...</div>
+            <button class="full-width-button" onclick="publishPost()">Publish Post</button>
+            <br>
+            <br>
+            <button class="full-width-button" onclick="goToPublicPage()">Go to Public Page</button>
+        </div>
+    </div>
+    
+    
+    <hr>
+    <p> salin kode di bawah ini, dan ubah elemen # biar sesuai <br> = hiddenContent#,read-more#, ubah misal 10  semua, dan saya sarankan <b>untuk mengubah angka lebih besar dari jumlah card yang ada di halaman beranda</b></p>
+    
+    <div class="salin">
+        <button onclick="copyToClipboard()">Salin Kode</button>
+    </div>
+</body>
+
+</html>
+
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+
+    <script>
+        // Konfigurasi Firebase (ganti dengan konfigurasi proyek Firebase Anda)
+        const firebaseConfig = {
+            apiKey: "AIzaSyBDyxki3rjsAAHnobAkLX8AoP6xcKeSdKM",
+            authDomain: "fast-circle-387914.firebaseapp.com",
+            databaseURL: "https://fast-circle-387914-default-rtdb.firebaseio.com",
+            projectId: "fast-circle-387914",
+            storageBucket: "fast-circle-387914.appspot.com",
+            messagingSenderId: "621262963505",
+            appId: "1:621262963505:web:988f3b4aa1be74ed1a2610",
+            measurementId: "G-0HJPRZZBJB"
+        };
+
+        // Inisialisasi Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Referensi ke Realtime Database Firebase
+        const database = firebase.database();
+        const contentRef = database.ref('content');
+
+        // Fungsi untuk memublikasikan postingan
+        function publishPost() {
+            const postContent = document.getElementById('postContent').value;
+            const publishingText = document.getElementById('publishingText');
+            const loadingIcon = document.getElementById('loadingIcon');
+
+            if (postContent.trim()) {
+                // Tampilkan teks "Processing..."
+                publishingText.innerHTML = 'Processing...';
+                publishingText.style.display = 'block';
+
+                // Tampilkan ikon loading
+                loadingIcon.style.display = 'inline';
+
+                // Kirim data ke Firebase setelah penundaan singkat (simulasi pengiriman data)
+                setTimeout(() => {
+                    // Tampilkan teks "Publishing..."
+                    publishingText.innerHTML = 'Publishing...';
+
+                    setTimeout(() => {
+                        contentRef.push({
+                            content: postContent
+                        });
+
+                        // Bersihkan input setelah pengiriman
+                        document.getElementById('postContent').value = "";
+
+                        // Sembunyikan teks "Publishing..." dan ikon loading
+                        publishingText.style.display = 'none';
+                        loadingIcon.style.display = 'none';
+
+                        // Tampilkan teks "Done"
+                        publishingText.innerHTML = 'Done';
+
+                        // Redirect to the public page (opsional)
+                        // window.location.href = "https://pocom5-github-io.vercel.app/";
+                    }, 1500); // Penundaan simulasi pengiriman data (1,5 detik)
+                }, 1500); // Penundaan simulasi proses (1,5 detik)
+            } else {
+                alert('Post content cannot be empty.');
+            }
+        }
+
+        // Fungsi untuk menuju halaman publik
+        function goToPublicPage() {
+            window.location.href = "https://pocom5-github-io.vercel.app/";
+        }
+    </script>
+</body>
+
+</html>
+
+
+
+
+       
+
+<script>
+    function copyToClipboard() {
+        var codeToCopy = `
+<div class="card">
+        <img src="#######" alt="Card Image 1">
+        <div class="release-date">#######</div>
+        <div class="card-description">
+            <h3>######</h3>
+            
+                              
+                <div class="custom-info">
+    <p><i class="fas fa-lock kunci"></i>######</p>
+    <p><i class="fas fa-fire api"></i>#######</p>
+    <p><i class="fas fa-user developer"></i> ######</p>
+    <p><i class="fas fa-calendar kalender"></i> ######</p>
+
+
+
+
+        
+           
+            <div id="hiddenContent#" style="display: none;">                            
+              <hr>
+               <!-- perbatasan -->
+               
+               #
+               
+               
+   <!-- perbatasan -->
+            </div>
+           </div>
+           
+            <center> <button id="read-more#" onclick="toggleReadMore('hiddenContent#', 'read-more#')">Baca Selengkapnya</button></center>
+        </div>
+        <br>
+        <a href="#" class="like-button">Download</a>
+        
+         
+    </div>
+`;
+        navigator.clipboard.writeText(codeToCopy).then(function () {
+            alert("Kode berhasil disalin!");
+        }).catch(function (err) {
+            console.error('Gagal menyalin kode: ', err);
+        });
+    }
+</script>
