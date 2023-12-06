@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,6 +21,11 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             background-color: #fff;
+            filter: blur(4px); /* Initial blur effect */
+        }
+
+        .dashboard-form.verified {
+            filter: none; /* Remove blur if email is verified */
         }
 
         .form-group {
@@ -106,13 +112,85 @@
         .salin button:hover {
             background-color: #45a049;
         }
+
+        #user-info {
+            display: none;
+            margin-bottom: 20px;
+        }
+
+        #user-info img {
+            width: 50px; /* Adjust size as needed */
+            border-radius: 50%;
+        }
+
+        #user-info p {
+            margin: 10px 0 0;
+            font-weight: bold;
+        }
+        
+        
+        #verificationMessage {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Latar belakang hitam transparan */
+            z-index: 1;
+            backdrop-filter: blur(4px); /* Efek blur untuk latar belakang */
+        }
+
+        #verificationMessageContent {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        #verificationMessageContent button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        #verificationMessageContent button:hover {
+            background-color: #45a049;
+        }
+        
+          #back-link {
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+    margin: 10px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+  }
     </style>
 </head>
 
+
+
 <body>
-    
-    <h2>halaman deploy</h2>
-    <div class="dashboard-form">
+ <a id="back-link" href="javascript:history.back()"><i class="fas fa-arrow-left"></i> </a>
+
+
+
+    <h2>Halaman deploy</h2>
+    <div class="dashboard-form" id="dashboardForm">
+        <div id="user-info">
+            <img id="user-photo" alt="User Photo">
+            <p id="user-name"></p>
+        </div>
         <div class="form-group">
             <label for="postContent">Post Content:</label>
             <textarea id="postContent" class="full-width-textarea" placeholder="Enter your post content"></textarea>
@@ -122,31 +200,31 @@
             <div class="publishing-text" id="publishingText">Processing...</div>
             <div class="loading-icon" id="loadingIcon">Loading...</div>
             <div class="success-message" id="successMessage">Done! Post published successfully.</div>
-            <button class="full-width-button" onclick="publishPost()">Publish Post</button>
+           <button class="full-width-button" onclick="publishPost()"> <i class="fas fa-paper-plane"></i> Publish Post </button>
             <br>
             <br>
             <button class="full-width-button" onclick="goToPublicPage()">Go to Public Page</button>
         </div>
     </div>
-    
+
     <div class="salin">
         <button onclick="copyToClipboard()">Salin Kode</button>
         <button onclick="goToPublicPage2()">buat kode</button>
     </div>
-    
+
+    <div id="verificationMessage">
+        <div id="verificationMessageContent">
+            <p>Email belum diverifikasi. Silakan periksa email Anda untuk verifikasi.</p>
+            <button onclick="closeVerificationMessage()">Tutup</button>
+        </div>
+    </div>
+
     <hr>
-    <p> salin kode di bawah ini, dan ubah elemen # biar sesuai <br> = hiddenContent#,read-more#, ubah misal 10  semua, dan saya sarankan <b>untuk mengubah angka lebih besar dari jumlah card yang ada di halaman beranda</b></p>
-
-    <!-- Firebase SDK -->
-    
-    
-
-        
-       
-   
+    <p> salin kode di bawah ini, dan ubah elemen # biar sesuai <br> = hiddenContent#,read-more#, ubah misal 10 semua, dan saya sarankan <b>untuk mengubah angka lebih besar dari jumlah card yang ada di halaman beranda</b></p>
 
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
 
     <script>
@@ -168,6 +246,39 @@
         // Referensi ke Realtime Database Firebase
         const database = firebase.database();
         const contentRef = database.ref('content');
+
+        // Fungsi untuk memeriksa status verifikasi email
+        function checkEmailVerification() {
+            const user = firebase.auth().currentUser;
+            const verificationMessage = document.getElementById('verificationMessage');
+
+            if (user && user.emailVerified) {
+                document.getElementById('dashboardForm').classList.add('verified');
+                document.getElementById('user-info').style.display = 'flex';
+                document.getElementById('user-photo').src = user.photoURL || 'default-photo-url.jpg';
+                document.getElementById('user-name').innerText = user.displayName || 'Guest';
+            } else {
+                document.getElementById('dashboardForm').classList.remove('verified');
+                verificationMessage.style.display = 'block';
+            }
+        }
+
+        // Fungsi untuk menutup pesan verifikasi
+        function closeVerificationMessage() {
+            const verificationMessage = document.getElementById('verificationMessage');
+            verificationMessage.style.display = 'none';
+        }
+
+        // Panggil fungsi saat halaman dimuat
+        window.onload = () => {
+            // Initialize Firebase Auth
+            const auth = firebase.auth();
+
+            // Fungsi yang dipanggil saat status autentikasi berubah
+            auth.onAuthStateChanged(user => {
+                checkEmailVerification(user);
+            });
+        };
 
         // Fungsi untuk memublikasikan postingan
         function publishPost() {
@@ -207,79 +318,56 @@
                 alert('Post content cannot be empty.');
             }
         }
+
         // Fungsi untuk menuju halaman publik
         function goToPublicPage() {
             window.location.href = "https://pocom5-github-io.vercel.app/";
         }
-        
+
         function goToPublicPage2() {
             window.location.href = "input.html";
         }
     </script>
-</body>
 
-</html>
-
-
-
-
-       
-
-<script>
-    function copyToClipboard() {
-        var codeToCopy = `
+    <script>
+        function copyToClipboard() {
+            var codeToCopy = `
 <div class="card">
         <img src="#######" alt="Card Image 1">
         <div class="release-date">#######</div>
         <div class="card-description">
             <h3>######</h3>
-            
-                              
-                <div class="custom-info">
-    <p><i class="fas fa-lock kunci"></i>######</p>
-    <p><i class="fas fa-fire api"></i>#######</p>
-    <p><i class="fas fa-user developer"></i> ######</p>
-    <p><i class="fas fa-calendar kalender"></i> ######</p>
 
+            <div class="custom-info">
+                <p><i class="fas fa-lock kunci"></i>######</p>
+                <p><i class="fas fa-fire api"></i>#######</p>
+                <p><i class="fas fa-user developer"></i> ######</p>
+                <p><i class="fas fa-calendar kalender"></i> ######</p>
 
+                <div id="hiddenContent#" style="display: none;">
+                    <hr>
+                    <!-- perbatasan -->
 
+                    #
 
-        
-           
-            <div id="hiddenContent#" style="display: none;">                            
-              <hr>
-               <!-- perbatasan -->
-               
-               #
-               
-               
-   <!-- perbatasan -->
+                    <!-- perbatasan -->
+                </div>
             </div>
-           </div>
-           
+
             <center> <button id="read-more#" onclick="toggleReadMore('hiddenContent#', 'read-more#')">Baca Selengkapnya</button></center>
         </div>
         <br>
         <a href="#" class="like-button">Download</a>
-        
-         
     </div>
 `;
-        navigator.clipboard.writeText(codeToCopy).then(function () {
-            alert("Kode berhasil disalin!");
-        }).catch(function (err) {
-            console.error('Gagal menyalin kode: ', err);
-        });
-    }
-</script>
 
+            navigator.clipboard.writeText(codeToCopy).then(function () {
+                alert("Kode berhasil disalin!");
+            }).catch(function (err) {
+                console.error('Gagal menyalin kode: ', err);
+            });
+        }
+    </script>
+</body>
 
-
-
-
-
-
-
-
-
-            
+</html>
