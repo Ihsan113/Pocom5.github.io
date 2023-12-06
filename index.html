@@ -19,7 +19,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
   
-  
+ 
+    <!-- Tautan ke Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+
   
    <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -691,9 +695,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         
          <div class="animated-text slide-fade-animation"> <p style="font-family: 'Roboto', sans-serif;">pilih cusrom poco m5 dibawah,download sekarang.</p></div>
          
-          <div id="publicContentContainer">
-        <!-- Hasil input dari halaman dashboard akan ditampilkan di sini -->
-    </div>
+         <div id="publicContentContainer">
+    <!-- Animasi loading -->
+   <div id="loadingAnimation" class="animate__animated animate__fadeIn" style="display: none;">
+    <!-- Animasi loading dari Animate.css -->
+    Loading...
+</div>
+
+    
+    <!-- Hasil input dari halaman dashboard akan ditampilkan di sini -->
+</div>
+
    
      <div class="card">
         <img src="Gambar/foto 6.jpg" alt="Card Image 1">
@@ -1708,33 +1720,35 @@ function signOut() {
 <!-- perbatasan -->
 
  const contentRef = database.ref('content');
+const publicContentContainer = document.getElementById('publicContentContainer');
+const loadingAnimation = document.getElementById('loadingAnimation');
 
-        // Function to display the inputted content
-        // Function to display the inputted content
 function showPublicContent(content) {
-    const publicContentContainer = document.getElementById('publicContentContainer');
-    // Menggunakan insertAdjacentHTML agar kontennya ditambahkan di bagian paling atas
+    // Sembunyikan animasi loading
+    loadingAnimation.style.display = 'none';
+
+    // Tampilkan konten
     publicContentContainer.insertAdjacentHTML('afterbegin', content);
 }
 
-// Load data from Firebase when the page loads
 document.addEventListener('DOMContentLoaded', function () {
+    // Tampilkan animasi loading saat halaman dimuat
+    loadingAnimation.style.display = 'block';
+
     contentRef.on('child_added', function (snapshot) {
         const { content } = snapshot.val();
         let htmlContent = '';
 
         htmlContent += `<p>${content}</p>`;
 
-        // Display the results on the public page
+        // Tampilkan hasil setelah mendapatkan data dari Firebase
         showPublicContent(htmlContent);
     });
 });
+
 
 </script>
 
 
 </body>
 </html>
-
-
-
