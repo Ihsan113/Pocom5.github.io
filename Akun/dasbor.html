@@ -9,7 +9,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0px;
             text-align: center; /* Center the content */
         }
 
@@ -77,6 +77,13 @@
             }
         }
 
+        .success-message {
+            color: #4CAF50;
+            font-weight: bold;
+            margin-top: 10px;
+            display: none;
+        }
+
         .salin {
             display: flex;
             justify-content: center;
@@ -84,12 +91,13 @@
         }
 
         .salin button {
-            width: 150px;
+            width: auto;
             padding: 10px;
             box-sizing: border-box;
-            background-color: #4CAF50;
+            background-color: #17485ac6;
             color: #fff;
             border: none;
+            margin: 5px;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease-in-out;
@@ -103,7 +111,7 @@
 
 <body>
     
-<h2>Halaman privat</h2>
+    <h2>halaman deploy</h2>
     <div class="dashboard-form">
         <div class="form-group">
             <label for="postContent">Post Content:</label>
@@ -113,6 +121,7 @@
         <div class="form-group">
             <div class="publishing-text" id="publishingText">Processing...</div>
             <div class="loading-icon" id="loadingIcon">Loading...</div>
+            <div class="success-message" id="successMessage">Done! Post published successfully.</div>
             <button class="full-width-button" onclick="publishPost()">Publish Post</button>
             <br>
             <br>
@@ -120,17 +129,21 @@
         </div>
     </div>
     
+    <div class="salin">
+        <button onclick="copyToClipboard()">Salin Kode</button>
+        <button onclick="goToPublicPage2()">buat kode</button>
+    </div>
     
     <hr>
     <p> salin kode di bawah ini, dan ubah elemen # biar sesuai <br> = hiddenContent#,read-more#, ubah misal 10  semua, dan saya sarankan <b>untuk mengubah angka lebih besar dari jumlah card yang ada di halaman beranda</b></p>
+
+    <!-- Firebase SDK -->
     
-    <div class="salin">
-        <button onclick="copyToClipboard()">Salin Kode</button>
-    </div>
-</body>
+    
 
-</html>
-
+        
+       
+   
 
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
@@ -161,18 +174,14 @@
             const postContent = document.getElementById('postContent').value;
             const publishingText = document.getElementById('publishingText');
             const loadingIcon = document.getElementById('loadingIcon');
+            const successMessage = document.getElementById('successMessage');
 
             if (postContent.trim()) {
-                // Tampilkan teks "Processing..."
                 publishingText.innerHTML = 'Processing...';
                 publishingText.style.display = 'block';
-
-                // Tampilkan ikon loading
                 loadingIcon.style.display = 'inline';
 
-                // Kirim data ke Firebase setelah penundaan singkat (simulasi pengiriman data)
                 setTimeout(() => {
-                    // Tampilkan teks "Publishing..."
                     publishingText.innerHTML = 'Publishing...';
 
                     setTimeout(() => {
@@ -180,28 +189,31 @@
                             content: postContent
                         });
 
-                        // Bersihkan input setelah pengiriman
                         document.getElementById('postContent').value = "";
 
-                        // Sembunyikan teks "Publishing..." dan ikon loading
                         publishingText.style.display = 'none';
                         loadingIcon.style.display = 'none';
+                        successMessage.style.display = 'block';
 
-                        // Tampilkan teks "Done"
-                        publishingText.innerHTML = 'Done';
+                        setTimeout(() => {
+                            successMessage.style.display = 'none';
+                            publishingText.innerHTML = 'Done';
+                        }, 2000);
 
-                        // Redirect to the public page (opsional)
-                        // window.location.href = "https://pocom5-github-io.vercel.app/";
-                    }, 1500); // Penundaan simulasi pengiriman data (1,5 detik)
-                }, 1500); // Penundaan simulasi proses (1,5 detik)
+                    }, 1500);
+
+                }, 1500);
             } else {
                 alert('Post content cannot be empty.');
             }
         }
-
         // Fungsi untuk menuju halaman publik
         function goToPublicPage() {
             window.location.href = "https://pocom5-github-io.vercel.app/";
+        }
+        
+        function goToPublicPage2() {
+            window.location.href = "input.html";
         }
     </script>
 </body>
@@ -260,3 +272,14 @@
         });
     }
 </script>
+
+
+
+
+
+
+
+
+
+
+            
