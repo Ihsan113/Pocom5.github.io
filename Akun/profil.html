@@ -95,26 +95,55 @@
       margin-top: 10px;
       color: #1a73e8;
     }
-      #back-link {
-    text-decoration: none;
-    color: black;
-    font-size: 25px;
-    margin: 10px;
-    position: fixed;
-    top: 10px;
-    left: 10px;
-  }
-  
-    
 
-    
+    #back-link {
+      text-decoration: none;
+      color: black;
+      font-size: 25px;
+      margin: 10px;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+    }
+
+    /* Gaya untuk pesan login */
+    #login-popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    #login-popup p {
+      margin-top: 0;
+    }
+
+    #login-popup button {
+      background-color: #1a73e8;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
   </style>
 </head>
 
 <body>
-    
-     <a id="back-link" href="javascript:history.back()"><i class="fas fa-arrow-left"></i> </a>
-    
+
+  <a id="back-link" href="javascript:history.back()"><i class="fas fa-arrow-left"></i> </a>
+
   <div class="card">
     <h2>Profil Kamu</h2>
     <img id="profileImage" src="" alt="Profile Image">
@@ -135,6 +164,11 @@
 
     <!-- Tombol untuk mengganti sandi -->
     <button onclick="changePassword()">Ganti Password</button>
+
+    <div id="login-popup">
+      <p>Silakan login untuk melihat profil.</p>
+      <button onclick="redirectToLoginPage()">Login</button>
+    </div>
 
     <script>
       // Konfigurasi Firebase
@@ -157,6 +191,7 @@
         const emailElement = document.getElementById('email');
         const verificationStatusElement = document.getElementById('verificationStatus');
         const profileImageElement = document.getElementById('profileImage');
+        const loginPopup = document.getElementById('login-popup');
 
         if (user && displayNameElement && emailElement) {
           displayNameElement.textContent = user.displayName || 'Pengguna';
@@ -177,6 +212,11 @@
             verificationStatusElement.textContent = 'Email belum terverifikasi';
           } else {
             verificationStatusElement.textContent = 'Email sudah terverifikasi';
+          }
+        } else {
+          // Jika pengguna belum login, tampilkan pesan login
+          if (loginPopup) {
+            loginPopup.style.display = 'block';
           }
         }
       });
@@ -261,6 +301,12 @@
           console.error('Error sending verification email:', error.code, error.message);
           alert('Gagal mengirim email verifikasi. Silakan coba lagi.');
         });
+      }
+
+      // Fungsi untuk mengarahkan pengguna ke halaman login
+      function redirectToLoginPage() {
+        // Gantilah URL berikut dengan URL halaman login Anda
+        window.location.href = 'login.html';
       }
     </script>
   </div>
