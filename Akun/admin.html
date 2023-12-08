@@ -81,6 +81,10 @@
   <div id="contentList" class="card-container">
     <!-- Tempat untuk menampilkan daftar konten -->
   </div>
+  <h2>DIY Content List</h2>
+  <div id="diyContentList" class="card-container">
+    <!-- Tempat untuk menampilkan daftar DIY content -->
+  </div>
 
   <script>
     const firebaseConfig = {
@@ -101,8 +105,14 @@
     auth.onAuthStateChanged((user) => {
       const loggedInUsersBody = document.getElementById('logged-in-users');
       const contentListContainer = document.getElementById('contentList');
+      const diyContentListContainer = document.getElementById('diyContentList');
 
-      if (loggedInUsersBody && contentListContainer) {
+      if (loggedInUsersBody && contentListContainer && diyContentListContainer) {
+        // Clear existing content and DIY content
+        loggedInUsersBody.innerHTML = '';
+        contentListContainer.innerHTML = '';
+        diyContentListContainer.innerHTML = '';
+
         if (user) {
           const userRow = document.createElement('tr');
           const userStatusRef = database.ref(`/status/${user.uid}`);
@@ -129,10 +139,9 @@
 
           // Tampilkan daftar konten
           showContentList();
-        } else {
-          // Clear the table body and content list if no users are logged in
-          loggedInUsersBody.innerHTML = '';
-          contentListContainer.innerHTML = '';
+
+          // Tampilkan daftar DIY konten
+          showDiyContentList();
         }
       }
     });
@@ -189,8 +198,75 @@
           });
       }
     }
+
+    // Function to show the list of DIY content
+    function showDiyContentList() {
+  const diyContentListContainer = document.getElementById('diyContentList');
+  const diyContentRef = database.ref('diylContent'); // Ganti diyContent menjadi diylContent
+
+  // Clear existing DIY content
+  diyContentListContainer.innerHTML = '';
+
+  diyContentRef.on('child_added', (snapshot) => {
+    const diylContent = snapshot.val().content;
+const contentText = diylContent ? diylContent : 'No content available';
+
+    const diyContentCard = document.createElement('div');
+    diyContentCard.className = 'card';
+    diyContentCard.innerHTML = `
+      <div class="card-content">
+        ${diylContent}
+      </div>
+      <button class="delete-button" onclick="deleteDiyContent('${snapshot.key}')">Delete DIY Content</button>
+    `;
+
+    diyContentListContainer.appendChild(diyContentCard);
+  });
+}
+
+
+    // Function to show the list of DIY content
+function showDiyContentList() {
+    const diyContentListContainer = document.getElementById('diyContentList');
+    const diyContentRef = database.ref('diylContent');
+
+    // Clear existing DIY content
+    diyContentListContainer.innerHTML = '';
+
+    diyContentRef.on('child_added', (snapshot) => {
+        const diylContent = snapshot.val().content;
+        const key = snapshot.key;
+
+        const diyContentCard = document.createElement('div');
+        diyContentCard.className = 'card';
+        diyContentCard.innerHTML = `
+        
+          <div class="card-content">
+            ${diylContent}
+          </div>
+          <button class="delete-button" onclick="deleteDiyContent('${key}')">Delete DIY Content</button>
+        `;
+
+        diyContentListContainer.appendChild(diyContentCard);
+    });
+}
+
+// Function to delete DIY content
+function deleteDiyContent(key) {
+    if (confirm("Are you sure you want to delete this DIY content?")) {
+        const diyContentRef = database.ref(`diylContent/${key}`);
+        diyContentRef.remove()
+            .then(() => {
+                alert('DIY Content deleted successfully.');
+            })
+            .catch((error) => {
+                console.error('Error deleting DIY content:', error);
+                alert('Error deleting DIY content. Please try again later.');
+            });
+    }
+}
+
   </script>
 </body>
 
 </html>
-

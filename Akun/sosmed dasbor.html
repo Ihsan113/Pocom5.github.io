@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Title</title>
+    <title>Dasbor sosmed</title>
 
     <style>
         body {
@@ -208,7 +208,7 @@
     </div>
 
     <div class="salin">
-        <button onclick="copyToClipboard()">Salin Kode</button>
+        
         <button onclick="goToPublicPage2()">buat kode</button>
     </div>
 
@@ -218,9 +218,7 @@
             <button onclick="closeVerificationMessage()">Tutup</button>
         </div>
     </div>
-
-    <hr>
-    <p> salin kode di bawah ini, dan ubah elemen # biar sesuai <br> = hiddenContent#,read-more#, ubah misal 10 semua, dan saya sarankan <b>untuk mengubah angka lebih besar dari jumlah card yang ada di halaman beranda</b></p>
+   
 
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
@@ -245,7 +243,7 @@
 
         // Referensi ke Realtime Database Firebase
         const database = firebase.database();
-        const contentRef = database.ref('content');
+        const contentRef = database.ref('diylContent');
 
         // Fungsi untuk memeriksa status verifikasi email
         function checkEmailVerification() {
@@ -300,7 +298,7 @@
 
                     setTimeout(() => {
                         contentRef.push({
-                            content: postContent
+                            diylContent: postContent
                         });
 
                         document.getElementById('postContent').value = "";
@@ -324,53 +322,15 @@
 
         // Fungsi untuk menuju halaman publik
         function goToPublicPage() {
-            window.location.href = "https://pocom5-github-io.vercel.app/";
+            window.location.href = "sosmed.html";
         }
 
         function goToPublicPage2() {
-            window.location.href = "input.html";
+            window.location.href = "sosmed kode.html";
         }
     </script>
 
-    <script>
-        function copyToClipboard() {
-            var codeToCopy = `
-<div class="card">
-        <img src="#######" alt="Card Image 1">
-        <div class="release-date">#######</div>
-        <div class="card-description">
-            <h3>######</h3>
-
-            <div class="custom-info">
-                <p><i class="fas fa-lock kunci"></i>######</p>
-                <p><i class="fas fa-fire api"></i>#######</p>
-                <p><i class="fas fa-user developer"></i> ######</p>
-                <p><i class="fas fa-calendar kalender"></i> ######</p>
-
-                <div id="hiddenContent#" style="display: none;">
-                    <hr>
-                    <!-- perbatasan -->
-
-                    #
-
-                    <!-- perbatasan -->
-                </div>
-            </div>
-
-            <center> <button id="read-more#" onclick="toggleReadMore('hiddenContent#', 'read-more#')">Baca Selengkapnya</button></center>
-        </div>
-        <br>
-        <a href="#" class="like-button">Download</a>
-    </div>
-`;
-
-            navigator.clipboard.writeText(codeToCopy).then(function () {
-                alert("Kode berhasil disalin!");
-            }).catch(function (err) {
-                console.error('Gagal menyalin kode: ', err);
-            });
-        }
-    </script>
+   
 </body>
 
 </html>
