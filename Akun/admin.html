@@ -199,31 +199,7 @@
       }
     }
 
-    // Function to show the list of DIY content
-    function showDiyContentList() {
-  const diyContentListContainer = document.getElementById('diyContentList');
-  const diyContentRef = database.ref('diylContent'); // Ganti diyContent menjadi diylContent
-
-  // Clear existing DIY content
-  diyContentListContainer.innerHTML = '';
-
-  diyContentRef.on('child_added', (snapshot) => {
-    const diylContent = snapshot.val().content;
-const contentText = diylContent ? diylContent : 'No content available';
-
-    const diyContentCard = document.createElement('div');
-    diyContentCard.className = 'card';
-    diyContentCard.innerHTML = `
-      <div class="card-content">
-        ${diylContent}
-      </div>
-      <button class="delete-button" onclick="deleteDiyContent('${snapshot.key}')">Delete DIY Content</button>
-    `;
-
-    diyContentListContainer.appendChild(diyContentCard);
-  });
-}
-
+   
 
     // Function to show the list of DIY content
 function showDiyContentList() {
@@ -234,20 +210,28 @@ function showDiyContentList() {
     diyContentListContainer.innerHTML = '';
 
     diyContentRef.on('child_added', (snapshot) => {
-        const diylContent = snapshot.val().content;
-        const key = snapshot.key;
+        const snapshotValue = snapshot.val();
+        console.log("Snapshot:", snapshotValue); // Tambahkan ini
 
-        const diyContentCard = document.createElement('div');
-        diyContentCard.className = 'card';
-        diyContentCard.innerHTML = `
-        
-          <div class="card-content">
-            ${diylContent}
-          </div>
-          <button class="delete-button" onclick="deleteDiyContent('${key}')">Delete DIY Content</button>
-        `;
+        if (snapshotValue && snapshotValue.hasOwnProperty('diylContent')) {
+            const diylContent = snapshotValue.diylContent;
+            const key = snapshot.key;
+            console.log("Key:", key); // Tambahkan ini
 
-        diyContentListContainer.appendChild(diyContentCard);
+            const diyContentCard = document.createElement('div');
+            diyContentCard.className = 'card';
+            diyContentCard.innerHTML = `
+            
+              <div class="card-content">
+                ${diylContent}
+              </div>
+              <button class="delete-button" onclick="deleteDiyContent('${key}')">Delete DIY Content</button>
+            `;
+
+            diyContentListContainer.appendChild(diyContentCard);
+        } else {
+            console.error("Invalid DIY content structure:", snapshotValue);
+        }
     });
 }
 
