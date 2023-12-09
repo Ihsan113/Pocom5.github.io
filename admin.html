@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Page</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;     
+      width: auto;
+      justify-content: center; /* Center the content cards */
+    }
+
+    .card {
+      padding: 16px;
+      width: 250px;
+      display: flex;
+      margin: 0px;
+      
+      flex-direction: column;
+      text-align: center;
+      background-color: #f9f9f9; /* Added background color for better visibility */
+    }
+
+    .card-content {
+      flex: 1;
+      margin-bottom: 10px;
+    }
+
+    .delete-button {
+      background-color: #ff0000;
+      color: #ffffff;
+      padding: 10px;
+      border: none;
+      width: 100%; /* Make the button full width */
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Welcome to the Admin Page</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="logged-in-users">
+      <!-- Tempat untuk menampilkan daftar pengguna yang login -->
+    </tbody>
+  </table>
+
+  <h2>Content List</h2>
+  <div id="contentList" class="card-container">
+    <!-- Tempat untuk menampilkan daftar konten -->
+  </div>
+  <h2>DIY Content List</h2>
+  <div id="diyContentList" class="card-container">
+    <!-- Tempat untuk menampilkan daftar DIY content -->
+  </div>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBDyxki3rjsAAHnobAkLX8AoP6xcKeSdKM",
+      authDomain: "fast-circle-387914.firebaseapp.com",
+      databaseURL: "https://fast-circle-387914-default-rtdb.firebaseio.com",
+      projectId: "fast-circle-387914",
+      storageBucket: "fast-circle-387914.appspot.com",
+      messagingSenderId: "621262963505",
+      appId: "1:621262963505:web:b522b47999e196fc1a2610",
+      measurementId: "G-QHE7BHYJMK"
+    };
+    const firebaseApp = firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const database = firebase.database();
+
+    // Mendengarkan perubahan pada status login pengguna
+    auth.onAuthStateChanged((user) => {
+      const loggedInUsersBody = document.getElementById('logged-in-users');
+      const contentListContainer = document.getElementById('contentList');
+      const diyContentListContainer = document.getElementById('diyContentList');
+
+      if (loggedInUsersBody && contentListContainer && diyContentListContainer) {
+        // Clear existing content and DIY content
+        loggedInUsersBody.innerHTML = '';
+        contentListContainer.innerHTML = '';
+        diyContentListContainer.innerHTML = '';
+
+        if (user) {
+          const userRow = document.createElement('tr');
+          const userStatusRef = database.ref(`/status/${user.uid}`);
+
+          userRow.innerHTML = `
+            <td>${user.email}</td>
+            <td>${user.displayName || 'N/A'}</td>
+            <td><button onclick="deleteUser('${user.uid}', '${user.email}')">Delete Account</button></td>
+          `;
+          loggedInUsersBody.appendChild(userRow);
+
+          // Mendengarkan perubahan pada status pengguna
+          userStatusRef.on('value', (snapshot) => {
+            // Tidak perlu menampilkan status online/offline
+          });
+
+          // Set status awal pengguna
+          userStatusRef.once('value', (snapshot) => {
+            // Tidak perlu menampilkan status online/offline
+          });
+
+          // Jika pengguna terputus, hapus baris dari tabel
+          userStatusRef.onDisconnect().remove();
+
+          // Tampilkan daftar konten
+          showContentList();
+
+          // Tampilkan daftar DIY konten
+          showDiyContentList();
+        }
+      }
+    });
+
+    // Function to delete a user's account
+    function deleteUser(uid, email) {
+      if (confirm(`Are you sure you want to delete the account of ${email}?`)) {
+        auth.currentUser.delete()
+          .then(() => {
+            alert(`Account of ${email} deleted successfully.`);
+          })
+          .catch((error) => {
+            console.error('Error deleting user:', error);
+            alert('Error deleting user. Please try again later.');
+          });
+      }
+    }
+
+    // Function to show the list of content
+    function showContentList() {
+      const contentListContainer = document.getElementById('contentList');
+      const contentRef = database.ref('content');
+
+      // Clear existing content
+      contentListContainer.innerHTML = '';
+
+      contentRef.on('child_added', (snapshot) => {
+        const key = snapshot.key;
+        const content = snapshot.val().content;
+
+        const contentCard = document.createElement('div');
+        contentCard.className = 'card';
+        contentCard.innerHTML = `
+      <div class="card-content">
+        ${content}
+      </div>
+      <button class="delete-button" onclick="deleteContent('${key}')">Delete Content</button>
+    `;
+
+        contentListContainer.appendChild(contentCard);
+      });
+    }
+
+    // Function to delete content
+    function deleteContent(key) {
+      if (confirm("Are you sure you want to delete this content?")) {
+        database.ref(`content/${key}`).remove()
+          .then(() => {
+            alert('Content deleted successfully.');
+          })
+          .catch((error) => {
+            console.error('Error deleting content:', error);
+            alert('Error deleting content. Please try again later.');
+          });
+      }
+    }
+
+   
+
+    // Function to show the list of DIY content
+function showDiyContentList() {
+    const diyContentListContainer = document.getElementById('diyContentList');
+    const diyContentRef = database.ref('diylContent');
+
+    // Clear existing DIY content
+    diyContentListContainer.innerHTML = '';
+
+    diyContentRef.on('child_added', (snapshot) => {
+        const snapshotValue = snapshot.val();
+        console.log("Snapshot:", snapshotValue); // Tambahkan ini
+
+        if (snapshotValue && snapshotValue.hasOwnProperty('diylContent')) {
+            const diylContent = snapshotValue.diylContent;
+            const key = snapshot.key;
+            console.log("Key:", key); // Tambahkan ini
+
+            const diyContentCard = document.createElement('div');
+            diyContentCard.className = 'card';
+            diyContentCard.innerHTML = `
+            
+              <div class="card-content">
+                ${diylContent}
+              </div>
+              <button class="delete-button" onclick="deleteDiyContent('${key}')">Delete DIY Content</button>
+            `;
+
+            diyContentListContainer.appendChild(diyContentCard);
+        } else {
+            console.error("Invalid DIY content structure:", snapshotValue);
+        }
+    });
+}
+
+// Function to delete DIY content
+function deleteDiyContent(key) {
+    if (confirm("Are you sure you want to delete this DIY content?")) {
+        const diyContentRef = database.ref(`diylContent/${key}`);
+        diyContentRef.remove()
+            .then(() => {
+                alert('DIY Content deleted successfully.');
+            })
+            .catch((error) => {
+                console.error('Error deleting DIY content:', error);
+                alert('Error deleting DIY content. Please try again later.');
+            });
+    }
+}
+
+  </script>
+</body>
+
+</html>
