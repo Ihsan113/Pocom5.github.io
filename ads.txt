@@ -1,0 +1,1 @@
+example.com, pub-1234567890123456, DIRECT, abc123def456
