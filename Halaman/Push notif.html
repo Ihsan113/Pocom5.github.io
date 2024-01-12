@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Push Notification Page</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #notificationPreview {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            display: none;
+        }
+
+        #notificationPreview img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+
+        .loader {
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            display: none;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <h2>Push Notification Form</h2>
+    <form id="notificationForm">
+        <label for="messageName">Message Name:</label>
+        <input type="text" id="messageName" name="messageName" required>
+
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <label for="image">Image URL:</label>
+        <input type="text" id="image" name="image">
+
+        <button type="button" onclick="previewNotification()">Preview</button>
+        <button type="button" onclick="sendNotification()">Review and Send<span class="loader"></span></button>
+    </form>
+
+    <div id="notificationPreview">
+        <h3>Notification Preview</h3>
+        <img id="previewImage" alt="Preview Image">
+        <p id="previewTitle"></p>
+        <p id="previewMessage"></p>
+    </div>
+
+    <script>
+        function previewNotification() {
+            var title = document.getElementById('title').value;
+            var message = document.getElementById('message').value;
+            var image = document.getElementById('image').value;
+
+            document.getElementById('previewTitle').textContent = "Title: " + title;
+            document.getElementById('previewMessage').textContent = "Message: " + message;
+
+            var previewImage = document.getElementById('previewImage');
+            if (image) {
+                previewImage.src = image;
+                previewImage.style.display = 'block';
+            } else {
+                previewImage.style.display = 'none';
+            }
+
+            var notificationPreview = document.getElementById('notificationPreview');
+            notificationPreview.style.display = 'block';
+            anime({
+                targets: '#notificationPreview',
+                opacity: 1,
+                translateY: [50, 0],
+                duration: 500,
+                easing: 'easeInOutQuad'
+            });
+        }
+
+        function sendNotification() {
+            var loader = document.querySelector('.loader');
+            loader.style.display = 'inline-block';
+
+            var title = document.getElementById('title').value;
+            var message = document.getElementById('message').value;
+            var image = document.getElementById('image').value;
+
+            var notificationData = {
+                app_id: "31819431-473c-45b8-857a-3691edad7fbd",
+                headings: { "en": title },
+                contents: { "en": message },
+                included_segments: ["All"]
+            };
+
+            if (image) {
+                notificationData['chrome_web_image'] = image;
+            }
+
+            fetch('https://onesignal.com/api/v1/notifications', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Basic ZmVlYWU1MTItMWRhMS00YzMwLThmN2MtNGJlZTA3YTQ3ZWEy'
+                },
+                body: JSON.stringify(notificationData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Notification sent successfully:', data);
+                alert('Notification sent successfully!');
+            })
+            .catch(error => {
+                console.error('Error sending notification:', error);
+                alert('Error sending notification. Check console for details.');
+            })
+            .finally(() => {
+                loader.style.display = 'none';
+                hideNotificationPreview();
+            });
+        }
+
+        function hideNotificationPreview() {
+            var notificationPreview = document.getElementById('notificationPreview');
+            anime({
+                targets: '#notificationPreview',
+                opacity: 0,
+                duration: 500,
+                easing: 'easeInOutQuad',
+                complete: function(anim) {
+                    notificationPreview.style.display = 'none';
+                    resetPreviewContent();
+                }
+            });
+        }
+
+        function resetPreviewContent() {
+            document.getElementById('previewTitle').textContent = "";
+            document.getElementById('previewMessage').textContent = "";
+            document.getElementById('previewImage').src = "";
+        }
+    </script>
+</body>
+</html>
