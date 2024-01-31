@@ -1,1 +1,1 @@
-example.com, pub-1234567890123456, DIRECT, abc123def456
+google.com, pub-9411020520642200, DIRECT, f08c47fec0942fa0
